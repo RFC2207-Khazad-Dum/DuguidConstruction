@@ -1,7 +1,30 @@
+
 .jobList {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10%;
+}
+.title {
+  margin-bottom: 7%;
+}
+.addJobBtn {
+  margin-top: 3%;
+  box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.45);
+  color: rgb(71, 70, 70);
+  background-color: rgba(125, 206, 124, 0.594);
+  border: 2px solid rgb(204, 189, 169);
+  border-radius: 5px;
+  width: 20%;
+  height: 5vw;
+}
+.active {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(161, 222, 133, 0.354);
+  color: rgb(0, 55, 0);
+  border-radius: 8px;
+  padding: 2%;
+  font-size: smaller;
+  margin-right: 1%;
 }

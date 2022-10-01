@@ -4,6 +4,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import styles from '../styles/Jobs.module.css'
+
 
 export default function ClientJobList({ job }) {
   return (
@@ -13,7 +15,7 @@ export default function ClientJobList({ job }) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Job Title</Typography>
+          <Typography>Job Title <span className={styles.active}>Active</span><span className={styles.active}>HVAC</span><span className={styles.active}>Drywall</span><span className={styles.active}>Demolition</span></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

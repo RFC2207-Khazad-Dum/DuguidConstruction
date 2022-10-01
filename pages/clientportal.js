@@ -20,10 +20,11 @@ export default function Jobs() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className={styles.jobList}>
+      <h1 className={styles.title}>Adam's Current Jobs</h1>
       <ClientJobItem />
       <ClientJobItem />
       <ClientJobItem />
-      <button onClick={handleShow}>Add a job</button>
+      <button className={styles.addJobBtn} onClick={handleShow}>+ &nbsp;Add a Job</button>
       <JobModal show={show} handleClose={handleClose} />
     </div>
     {/* </Layout> */}
