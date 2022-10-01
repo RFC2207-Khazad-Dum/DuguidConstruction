@@ -16,7 +16,7 @@ export default function JobModalForm() {
         <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
       <Form.Label>Select Require Services</Form.Label>
         {services.map((service) => (
-        <Form.Check type="checkbox" label={service} />
+        <Form.Check type="checkbox" label={service} isValid />
         ))}
       </Form.Group>
       </Row>
