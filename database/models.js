@@ -18,6 +18,8 @@ const reviewSchema = new mongoose.Schema({
 const jobSchema = new mongoose.Schema({
   title: String,
   address: String,
+  client: String,
+  assignedEmployee: String,
   media: String,
   description: String,
   categories: [String],
