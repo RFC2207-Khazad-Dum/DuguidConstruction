@@ -4,7 +4,7 @@ import { Jobs } from '../../../utils/database/models';
 const jobControllers = {
   // Create a new job
   newJob: async function() {
-    await db();
+    console.log('we here mutha fucka')
   },
 
   // Edit a job
