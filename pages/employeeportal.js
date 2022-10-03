@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import JobsList from '../components/JobsList';
+import jobControllers from '.././pages/api/controllers/jobs';
 
 const employeePortal = function() {
+  jobControllers.newJob();
   return (
     <div>
       <Head>

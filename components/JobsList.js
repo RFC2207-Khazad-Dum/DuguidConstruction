@@ -17,6 +17,11 @@ const Jobs = [
 ]
 
  const JobsList = function() {
+
+  const findJobs = () => {
+
+  }
+
   return (
     <div id='jobListAcc'>
       {Jobs.map((job) => (
