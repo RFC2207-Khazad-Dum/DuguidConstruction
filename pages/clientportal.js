@@ -20,7 +20,7 @@ export default function Jobs() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className={styles.jobList}>
-      <h1 className={styles.title}>Adam's Current Jobs</h1>
+      <h1 className={styles.title}>Adams Current Jobs</h1>
       <ClientJobItem />
       <ClientJobItem />
       <ClientJobItem />
