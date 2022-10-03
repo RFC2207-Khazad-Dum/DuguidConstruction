@@ -1,0 +1,44 @@
+.nav {
+  height: 85px;
+  background: rgb(42, 85, 165);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  padding-right: 120px;
+}
+
+.nav ul li {
+  margin: 5px 15px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .nav ul li {
+    margin: 5px 5px;
+  }
+}
+
+.nav img {
+  width: 150px;
+  height: 85px;
+}
+
+.link {
+  color: white !important;
+}
+
+.nav ul li :hover {
+  color: rgb(143, 196, 228) !important;
+}
+
