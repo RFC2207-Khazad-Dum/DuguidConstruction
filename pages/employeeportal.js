@@ -1,10 +1,7 @@
 import { React, useRef, useState, useEffect, useMemo } from 'react';
-// import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import Head from 'next/head';
-// import Image from'next/image';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import EmployeeAcc from '../components/EmployeeAccordion';
-import JobAcc from '../components/EmployeeJobItem';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
 
@@ -26,7 +23,7 @@ export default function Employees() {
       </Head>
       <div>
         <div className={styles.header}>Employee Portal</div>
-        <div className={styles.accordion}><JobAcc /></div>
+        <div className={styles.accordion}><EmployeeAcc /></div>
         <div className={styles.dataBoxes}>
           <div className={styles.directions}>
             {isLoaded ? <Map /> : <div>Loading...</div>}
