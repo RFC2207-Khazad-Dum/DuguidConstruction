@@ -1,0 +1,51 @@
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: tan;
+  font-size: xx-large;
+  font-weight: bold;
+  padding: 40px;
+  color: black;
+}
+
+.button {
+  background-color: rgb(42, 85, 165);
+  width: 200px;
+  height: 50px;
+  font-size: large;
+  margin-top: 25px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgb(42, 85, 165);
+  padding: 40px;
+  width: 100%;
+  color: white;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.contactInfo p {
+  padding-top: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+.icons {
+  padding-top: 15px;
+}
+
+.icons :hover {
+  color: rgb(143, 196, 228);
+  cursor: pointer;
+}
