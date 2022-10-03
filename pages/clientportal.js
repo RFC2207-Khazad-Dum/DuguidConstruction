@@ -14,7 +14,6 @@ export default function Jobs() {
   const handleShow = () => setShow(true);
   return(
     <>
-    {/* <Layout> */}
     <Head>
       <title>Duguid Construction</title>
       <link rel="icon" href="/favicon.ico" />
@@ -27,7 +26,6 @@ export default function Jobs() {
       <button className={styles.addJobBtn} onClick={handleShow}>+ &nbsp;Add a Job</button>
       <JobModal show={show} handleClose={handleClose} />
     </div>
-    {/* </Layout> */}
     </>
   )
 }

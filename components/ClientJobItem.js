@@ -6,8 +6,18 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from '../styles/Jobs.module.css'
 
+const job = {
+  title: "Broken Toilet",
+  address: "1234 N Main St, Somewhere, KS 12345",
+  client: "Adam Polk",
+  assignedEmployee: "Jacob Gramer",
+  media: "Some Images",
+  description: "My toilet is leaking from the back. I've tried shutting off the water valve and it's still leaking.",
+  categories: ['Carpentry', 'Painting', 'Plumbing', 'Electrical', 'Drywall'],
+  date: "Jan 06 2019"
+}
 
-export default function ClientJobList({ job }) {
+export default function ClientJobList() {
   return (
       <Accordion>
         <AccordionSummary
@@ -15,24 +25,33 @@ export default function ClientJobList({ job }) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Job Title <span className={styles.active}>Active</span><span className={styles.active}>HVAC</span><span className={styles.active}>Drywall</span><span className={styles.active}>Demolition</span></Typography>
+          <Typography>{job.title} <span className={styles.active}>Active</span>
+          {job.categories.map((category) => (
+            <span className={styles[category]}>{category}</span>
+          ))}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <b>Description</b>: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <b>Description</b>: {job.description}
           </Typography>
           <Typography>
-            <b>Services</b>: Drywall, HVAC, Demolition
+            <b>Services</b>: {job.categories.map((category, index) => {
+              if (job.categories[index + 1] === undefined) {
+                return category;
+              } else {
+                return category + ', '
+              }
+            })}
           </Typography>
           <Typography>
-            <b>Location</b>: 1234 Main St, Sometown, ST, 12345
+            <b>Location</b>: {job.address}
           </Typography>
           <Typography>
-            <b>Assigned Employee</b>: Jacob Gramer
+            <b>Assigned Employee</b>: {job.assignedEmployee}
           </Typography>
           <Typography>
-            <b>Attachments</b>: Some pictures
+            <b>Attachments</b>: {job.media}
           </Typography>
         </AccordionDetails>
       </Accordion>
