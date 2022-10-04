@@ -5,26 +5,31 @@ import Row from 'react-bootstrap/Row';
 import states from './StateList'
 import services from './Services'
 
-export default function ReviewModalForm() {
+export default function ReviewModalForm({ handleInputChange, handleCheck }) {
   return (
     <Form>
       <Row className="mb-3">
         <Col>
           <Form.Group as={Col} controlId="formReviewTitle">
+            <Form.Label>Name</Form.Label>
+            <Form.Control name="user" type="text" placeholder="Enter name" onChange={handleInputChange}/>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formReviewTitle">
             <Form.Label>Review Title</Form.Label>
-            <Form.Control type="text" placeholder="Enter review title" />
+            <Form.Control name="title" type="text" placeholder="Enter review title" onChange={handleInputChange}/>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formReviewDate">
             <Form.Label>Date of Service</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control name="workDate" type="date" onChange={handleInputChange}/>
           </Form.Group>
         </Col>
 
         <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
           <Form.Label>Select the services rendered</Form.Label>
             {services.map((service) => (
-            <Form.Check type="checkbox" label={service} isValid />
+            <Form.Check name={service} type="checkbox" label={service} isValid onChange={handleCheck}/>
             ))}
         </Form.Group>
       </Row>
@@ -33,12 +38,12 @@ export default function ReviewModalForm() {
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formReviewCity">
           <Form.Label>City where services were provided</Form.Label>
-          <Form.Control />
+          <Form.Control name="city" onChange={handleInputChange}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formReviewState">
           <Form.Label>State where services were provided</Form.Label>
-          <Form.Select defaultValue="Choose...">
+          <Form.Select name="state" defaultValue="Choose..." onChange={handleInputChange}>
             <option>Choose...</option>
             {states.map(state =>
             <option>{state}</option>)}
@@ -49,7 +54,7 @@ export default function ReviewModalForm() {
 
       <Form.Group className="mb-3" controlId="formGridAddress2">
         <Form.Label>Write your review here</Form.Label>
-        <Form.Control type="textarea"/>
+        <Form.Control name="body" type="textarea" onChange={handleInputChange}/>
         <Form.Text>Min. 20 Characters</Form.Text>
       </Form.Group>
 
