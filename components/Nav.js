@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.css';
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
 const Nav = () => {
+  const {user, error, isLoading } = useUser();
   return (
     <nav className={styles.nav}>
       <ul>
@@ -20,10 +22,19 @@ const Nav = () => {
           <Link href='/employeeportal'><a className={styles.link}>Employees</a></Link>
         </li>
         <li>
-          <Link href='/login'><a className={styles.link}>Login</a></Link>
+        {user ? (
+          <Link href='/api/auth/logout'><a className={styles.link}>Logout</a></Link>
+        ) : (
+          <Link href='/api/auth/login'><a className={styles.link}>Login</a></Link>
+        )}
         </li>
         <li>
           <Link href='/contact'><a className={styles.link}>Contact Us</a></Link>
+        </li>
+        <li>
+          {user ? (
+              <p className={styles.link}>{user.email}</p>
+          ) : (<></>)}
         </li>
       </ul>
     </nav>
