@@ -1,25 +1,39 @@
+import { React, useRef, useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
-import JobsList from '../components/JobsList';
-import React from 'react';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import EmployeeAcc from '../components/EmployeeAccordion';
+import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
+import Map from '../components/map';
+import styles from '../styles/EmployeePortal.module.css';
 
-const employeePortal = function() {
+export default function Employees() {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  })
+
+  const location = {
+    lat: 44,
+    lng: -80,
+  }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
-        <title>Employee Portal</title>
+        <title>Duguid Construction</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 id='employeePortalHeader'>Employee Portal</h1>
-      <JobsList access={'the access credentials'} list={'the list, too'}/>
-      <div className='employeePortalView'>
-        <div id='jobBoard'>Job Board</div>
-        <div className='employeeToolsAndHours'>
-          <div id='toolInventory'>Tool Inventory</div>
-          <div id='employeeHours'>Employee Hours</div>
+      <div>
+        <div className={styles.header}>Employee Portal</div>
+        <div className={styles.accordion}><EmployeeAcc /></div>
+        <div className={styles.dataBoxes}>
+          <div className={styles.directions}>
+            {isLoaded ? <Map /> : <div>Loading...</div>}
+          </div>
+          <div className={styles.hours}>
+            <EmployeeScheduleTable />
+          </div>
         </div>
       </div>
     </div>
-  );
-};
-
-export default employeePortal;
+  )
+}
