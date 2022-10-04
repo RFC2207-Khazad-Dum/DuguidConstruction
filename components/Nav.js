@@ -14,7 +14,7 @@ const Navigation = () => {
     <Container>
     <Navbar.Brand href="#home">
             <img
-              alt=""
+              alt="Duguid Construction Logo"
               src="/img/dc-logo.png"
               className={styles.logo}
             />

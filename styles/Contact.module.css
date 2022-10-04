@@ -1,0 +1,55 @@
+#mainContact {
+  height: 70vh;
+  padding: 20px;
+  background-color: rgb(42, 85, 165);
+  color: white;
+}
+
+#contactInfo {
+  padding: 20px 75px 75px 75px;
+}
+
+#contactTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contactTitle h1 {
+  font-size: 75px;
+}
+
+#contactBasic {
+  display: inline-block;
+  width: 50%;
+}
+
+#contactBasic h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#contactBasic li {
+  font-size: 20px;
+  margin: 10.5px;
+}
+
+#opHours {
+  display: inline-block;
+  width: 50%;
+}
+
+#opHours h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#opHours p {
+  font-size: 16px;
+}
+
+#opHours li {
+  font-size: 20px;
+  margin: 7px;
+}
