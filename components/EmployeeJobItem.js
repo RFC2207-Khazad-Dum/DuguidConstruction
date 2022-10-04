@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -14,6 +15,9 @@ import styles from '../styles/EmployeeAcc.module.css';
 export default function EmployeeJobList({job}) {
   const [show, setShow] = useState(false);
   const [notes, setNotes] = useState('');
+  const {user, error, isLoading } = useUser();
+
+  const assign = (user && user.role === 'Employer') ? (<Button variant="outline-success">Assign Job</Button>) : (<></>);
 
   const addNotes = () => {
     const option = {
@@ -65,6 +69,7 @@ export default function EmployeeJobList({job}) {
             <b>Notes</b>: {job.notes || 'no notes...'}
           </Typography>
           <Button variant="outline-success" onClick={handleShow}>Add Notes</Button>
+          {assign}
           <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Job Notes</Modal.Title>
