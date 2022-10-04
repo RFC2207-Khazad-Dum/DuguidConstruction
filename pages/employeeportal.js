@@ -2,7 +2,7 @@ import { React, useRef, useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import EmployeeAcc from '../components/EmployeeAccordion';
-import EmployeeScheduleTable from '../components/Employee Schedule';
+import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
 

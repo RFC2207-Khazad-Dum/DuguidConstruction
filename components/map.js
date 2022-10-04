@@ -5,6 +5,7 @@ import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
+// https://www.google.com/maps/search/tower+of+london/@51.5081066,-0.0781629,17z
 export default function Map({ listOfMarkers }){
   const center = useMemo(() => ({ lat: 38.8977, lng: -77.0365 }), [])
   return (
