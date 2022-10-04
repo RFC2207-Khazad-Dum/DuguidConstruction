@@ -15,12 +15,12 @@ export default function ClientJobList({ job }) {
           id="panel1a-header"
         >
           <Typography><span className={styles.jobTitle}>{job.title}</span>
-          <div className={styles.tags}>
+          {/* <div className={styles.tags}> */}
           <span className={styles.active}>Active</span>
           {job.categories.map((category, index) => (
             <span key={index} className={styles[category]}>{category}</span>
           ))}
-          </div>
+          {/* </div> */}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

@@ -28,9 +28,15 @@ const Navigation = () => {
           <Nav.Link href="/employeeportal" className={styles.link}>EMPLOYEES</Nav.Link>
           <Nav.Link href="/contact" className={styles.link}>CONTACT</Nav.Link>
           {user ? (
+<<<<<<< HEAD
           <Nav.Link href='/api/auth/logout'><a className={styles.link}>LOGOUT</a></Nav.Link>
         ) : (
           <Nav.Link href='/api/auth/login'><a className={styles.link}>LOGIN</a></Nav.Link>
+=======
+          <Nav.Link href='/api/auth/logout' className={styles.link}>LOGOUT</Nav.Link>
+        ) : (
+          <Nav.Link href='/api/auth/login' className={styles.link}>LOGIN</Nav.Link>
+>>>>>>> b034b4b7652a8c8c74b74202b0d8d6c9c1c91b82
         )}
          {user ? (
               <p className={styles.link}>{user.email}</p>
