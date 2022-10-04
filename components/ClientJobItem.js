@@ -6,33 +6,44 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from '../styles/Jobs.module.css'
 
-
 export default function ClientJobList({ job }) {
   return (
-      <Accordion>
+      <Accordion className={styles.job}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Job Title <span className={styles.active}>Active</span><span className={styles.active}>HVAC</span><span className={styles.active}>Drywall</span><span className={styles.active}>Demolition</span></Typography>
+          <Typography><span className={styles.jobTitle}>{job.title}</span>
+          <div className={styles.tags}>
+          <span className={styles.active}>Active</span>
+          {job.categories.map((category) => (
+            <span className={styles[category]}>{category}</span>
+          ))}
+          </div>
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <b>Description</b>: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <b>Description</b>: {job.description}
           </Typography>
           <Typography>
-            <b>Services</b>: Drywall, HVAC, Demolition
+            <b>Services</b>: {job.categories.map((category, index) => {
+              if (job.categories[index + 1] === undefined) {
+                return category;
+              } else {
+                return category + ', '
+              }
+            })}
           </Typography>
           <Typography>
-            <b>Location</b>: 1234 Main St, Sometown, ST, 12345
+            <b>Location</b>: {job.address}
           </Typography>
           <Typography>
-            <b>Assigned Employee</b>: Jacob Gramer
+            <b>Assigned Employee</b>: {job.assignedEmployee || 'Awaiting assignment'}
           </Typography>
           <Typography>
-            <b>Attachments</b>: Some pictures
+            <b>Attachments</b>: {job.media}
           </Typography>
         </AccordionDetails>
       </Accordion>
