@@ -2,6 +2,7 @@ import { React, useRef, useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import EmployeeAcc from '../components/EmployeeAccordion';
+import EmployeeScheduleTable from '../components/Employee Schedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
 
@@ -29,9 +30,7 @@ export default function Employees() {
             {isLoaded ? <Map /> : <div>Loading...</div>}
           </div>
           <div className={styles.hours}>
-            <div>Employee Hours</div>
-            <div>Assigned</div>
-            <div>Schedule</div>
+            <EmployeeScheduleTable />
           </div>
         </div>
       </div>
