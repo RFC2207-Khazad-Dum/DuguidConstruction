@@ -1,33 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.css';
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-const Nav = () => {
+const Navigation = () => {
+  const {user, error, isLoading } = useUser();
   return (
-    <nav className={styles.nav}>
-      <ul>
-        <img src="/img/dc-logo.png" alt="png of a roof representing company logo"/>
-        <li>
-          <Link href='/'><a className={styles.link}>Home</a></Link>
-        </li>
-        <li>
-          <Link href='/clientportal'><a className={styles.link}>Job Requests</a></Link>
-        </li>
-        <li>
-          <Link href='/reviews'><a className={styles.link}>Reviews</a></Link>
-        </li>
-        <li>
-          <Link href='/employeeportal'><a className={styles.link}>Employees</a></Link>
-        </li>
-        <li>
-          <Link href='/login'><a className={styles.link}>Login</a></Link>
-        </li>
-        <li>
-          <Link href='/contact'><a className={styles.link}>Contact Us</a></Link>
-        </li>
-      </ul>
-    </nav>
+    <Navbar bg="light" expand="lg" className={styles.coloredNav}>
+    <Container>
+    <Navbar.Brand href="#home">
+            <img
+              alt="Duguid Construction Logo"
+              src="/img/dc-logo.png"
+              className={styles.logo}
+            />
+          </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+          <Nav.Link href="/" className={styles.link}>HOME</Nav.Link>
+          <Nav.Link href="/clientportal" className={styles.link}>JOBS</Nav.Link>
+          <Nav.Link href="/reviews" className={styles.link}>REVIEWS</Nav.Link>
+          <Nav.Link href="/employeeportal" className={styles.link}>EMPLOYEES</Nav.Link>
+          <Nav.Link href="/login" className={styles.link}>LOGIN</Nav.Link>
+          <Nav.Link href="/contact" className={styles.link}>CONTACT</Nav.Link>
+          {user ? (
+          <Nav.Link href='/api/auth/logout'><a className={styles.link}>Logout</a></Nav.Link>
+        ) : (
+          <Nav.Link href='/api/auth/login'><a className={styles.link}>Login</a></Nav.Link>
+        )}
+         {user ? (
+              <p className={styles.link}>{user.email}</p>
+          ) : null}
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
   );
 }
 
-export default Nav;
+export default Navigation;
