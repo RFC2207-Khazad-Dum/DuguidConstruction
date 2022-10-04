@@ -5,19 +5,36 @@
   justify-content: center;
   align-items: center;
   padding: 10%;
+  background-color: rgba(247, 245, 241, 0.385);
 }
+.username {
+  color: rgba(43, 60, 34, 0.634) !important;}
 .title {
   margin-bottom: 7%;
+  font-size: 40px;
 }
+.job {
+  width: 100%;
+}
+.jobTitle {
+  font-size: 23px;
+}
+.tags {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .addJobBtn {
   margin-top: 3%;
   box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.45);
-  color: rgb(71, 70, 70);
-  background-color: rgba(125, 206, 124, 0.594);
+  color: rgb(39, 39, 39);
+  background-color: rgba(43, 60, 34, 0.425);
   border: 2px solid rgb(204, 189, 169);
   border-radius: 5px;
-  width: 20%;
-  height: 5vw;
+  width: 120px;
+  height: 50px;
 }
 .active {
   border: 1px solid rgb(11, 52, 0);

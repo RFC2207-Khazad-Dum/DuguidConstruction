@@ -6,29 +6,21 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from '../styles/Jobs.module.css'
 
-const job = {
-  title: "Broken Toilet",
-  address: "1234 N Main St, Somewhere, KS 12345",
-  client: "Adam Polk",
-  assignedEmployee: "Jacob Gramer",
-  media: "Some Images",
-  description: "My toilet is leaking from the back. I've tried shutting off the water valve and it's still leaking.",
-  categories: ['Carpentry', 'Painting', 'Plumbing', 'Electrical', 'Drywall'],
-  date: "Jan 06 2019"
-}
-
-export default function ClientJobList() {
+export default function ClientJobList({ job }) {
   return (
-      <Accordion>
+      <Accordion className={styles.job}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{job.title} <span className={styles.active}>Active</span>
+          <Typography><span className={styles.jobTitle}>{job.title}</span>
+          <div className={styles.tags}>
+          <span className={styles.active}>Active</span>
           {job.categories.map((category) => (
             <span className={styles[category]}>{category}</span>
           ))}
+          </div>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -48,7 +40,7 @@ export default function ClientJobList() {
             <b>Location</b>: {job.address}
           </Typography>
           <Typography>
-            <b>Assigned Employee</b>: {job.assignedEmployee}
+            <b>Assigned Employee</b>: {job.assignedEmployee || 'Awaiting assignment'}
           </Typography>
           <Typography>
             <b>Attachments</b>: {job.media}
