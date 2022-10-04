@@ -26,12 +26,11 @@ const Navigation = () => {
           <Nav.Link href="/clientportal" className={styles.link}>JOBS</Nav.Link>
           <Nav.Link href="/reviews" className={styles.link}>REVIEWS</Nav.Link>
           <Nav.Link href="/employeeportal" className={styles.link}>EMPLOYEES</Nav.Link>
-          <Nav.Link href="/login" className={styles.link}>LOGIN</Nav.Link>
           <Nav.Link href="/contact" className={styles.link}>CONTACT</Nav.Link>
           {user ? (
-          <Nav.Link href='/api/auth/logout'><a className={styles.link}>Logout</a></Nav.Link>
+          <Nav.Link href='/api/auth/logout' className={styles.link}>LOGOUT</Nav.Link>
         ) : (
-          <Nav.Link href='/api/auth/login'><a className={styles.link}>Login</a></Nav.Link>
+          <Nav.Link href='/api/auth/login' className={styles.link}>LOGIN</Nav.Link>
         )}
          {user ? (
               <p className={styles.link}>{user.email}</p>

@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 export default function EmployeeScheduleTable() {
   return (
     <div>
-      <Table striped bordered hover>
+      {/* <Table striped bordered hover>
         <thread>
           <tr>
             <th>Date</th>
@@ -23,7 +23,7 @@ export default function EmployeeScheduleTable() {
             <td>Plumbing</td>
           </tr>
         </tbody>
-      </Table>
+      </Table> */}
     </div>
   )
 };
