@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.css';
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Navigation = () => {
+  const {user, error, isLoading } = useUser();
   return (
     <Navbar bg="light" expand="lg" className={styles.coloredNav}>
     <Container>
@@ -26,6 +28,14 @@ const Navigation = () => {
           <Nav.Link href="/employeeportal" className={styles.link}>EMPLOYEES</Nav.Link>
           <Nav.Link href="/login" className={styles.link}>LOGIN</Nav.Link>
           <Nav.Link href="/contact" className={styles.link}>CONTACT</Nav.Link>
+          {user ? (
+          <Nav.Link href='/api/auth/logout'><a className={styles.link}>Logout</a></Nav.Link>
+        ) : (
+          <Nav.Link href='/api/auth/login'><a className={styles.link}>Login</a></Nav.Link>
+        )}
+         {user ? (
+              <p className={styles.link}>{user.email}</p>
+          ) : null}
         </Nav>
       </Navbar.Collapse>
     </Container>
