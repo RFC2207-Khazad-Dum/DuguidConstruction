@@ -17,8 +17,8 @@ export default function ClientJobList({ job }) {
           <Typography><span className={styles.jobTitle}>{job.title}</span>
           <div className={styles.tags}>
           <span className={styles.active}>Active</span>
-          {job.categories.map((category) => (
-            <span className={styles[category]}>{category}</span>
+          {job.categories.map((category, index) => (
+            <span key={index} className={styles[category]}>{category}</span>
           ))}
           </div>
           </Typography>
