@@ -28,8 +28,8 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
 
         <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
           <Form.Label>Select the services rendered</Form.Label>
-            {services.map((service) => (
-            <Form.Check name={service} type="checkbox" label={service} isValid onChange={handleCheck}/>
+            {services.map((service, index) => (
+            <Form.Check key={index} name={service} type="checkbox" label={service} isValid onChange={handleCheck}/>
             ))}
         </Form.Group>
       </Row>
@@ -45,8 +45,8 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
           <Form.Label>State where services were provided</Form.Label>
           <Form.Select name="state" defaultValue="Choose..." onChange={handleInputChange}>
             <option>Choose...</option>
-            {states.map(state =>
-            <option>{state}</option>)}
+            {states.map((state, index) =>
+            <option key={index}>{state}</option>)}
           </Form.Select>
         </Form.Group>
 

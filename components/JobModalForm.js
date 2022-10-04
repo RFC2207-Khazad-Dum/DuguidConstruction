@@ -16,8 +16,8 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
       </Form.Group>
       <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
     <Form.Label>Select Require Services</Form.Label>
-      {services.map((service) => (
-      <Form.Check type="checkbox" label={service} name={service} onChange={handleCheck} isValid />
+      {services.map((service, index) => (
+      <Form.Check key={index} type="checkbox" label={service} name={service} onChange={handleCheck} isValid />
       ))}
     </Form.Group>
     </Row>
@@ -42,8 +42,8 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
         <Form.Label>State</Form.Label>
         <Form.Select defaultValue="Choose..." name="state" onChange={handleInputChange}>
           <option>Choose...</option>
-          {states.map(state =>
-          <option>{state}</option>)}
+          {states.map((state, index) =>
+          <option key={index}>{state}</option>)}
         </Form.Select>
       </Form.Group>
 
