@@ -4,14 +4,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import EmployeeJobList from './EmployeeJobItem';
+import EmployeeJobItem from './EmployeeJobItem';
 import styles from '../styles/EmployeeAcc.module.css';
 
 const dummyData = {
   employees: [
     {
       title: 'rebuild treehouse',
-      address: '221 Baker St',
+      address: 'Rocky Mountain National Park',
       client: 'Henry',
       assignedEmployee: 'JGramer',
       media: 'none',
@@ -21,7 +21,7 @@ const dummyData = {
       },
     {
       title: 'fix garage sink',
-      address: 'Midtown',
+      address: 'Yosemite National Park',
       client: 'Jill',
       assignedEmployee: 'TWhite',
       media: 'none',
@@ -31,7 +31,7 @@ const dummyData = {
       },
     {
       title: 'rebuild driveway',
-      address: 'Casa Blanc',
+      address: 'Carlsbad Caverns',
       client: 'Mary',
       assignedEmployee: 'SDuran',
       media: 'none',
@@ -47,7 +47,7 @@ export default function EmployeeAcc() {
   return (
     <div>
       {dummyData.employees.map((job) => (
-        <EmployeeJobList key={job.address} job={job}/>
+        <EmployeeJobItem key={job.address} job={job}/>
       ))}
     </div>
   )

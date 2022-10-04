@@ -25,11 +25,13 @@ export default function Jobs() {
   const handleShow = () => setShow(true);
   return(
     <>
+    {/* <Layout> */}
     <Head>
       <title>Duguid Construction</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className={styles.jobList}>
+
       <h1 className={styles.title}><span className={styles.username}>Adams</span> Current Jobs</h1>
       {jobs.map((job, index) => (
         <ClientJobItem key={index} job={job} />
@@ -37,6 +39,7 @@ export default function Jobs() {
       <button className={styles.addJobBtn} onClick={handleShow}>+ &nbsp;Add a Job</button>
       <JobModal show={show} handleClose={handleClose} />
     </div>
+    {/* </Layout> */}
     </>
   )
 }
