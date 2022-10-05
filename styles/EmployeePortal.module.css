@@ -47,4 +47,8 @@
   flex-direction: column;
   border: 2px solid black;
   width: 45vw;
+  height: 50vh;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

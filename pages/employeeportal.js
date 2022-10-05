@@ -23,7 +23,7 @@ export default function Employees() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <div className={styles.header}>Employee Portal</div>
+        <div className={styles.header}>- Employee Name Here - Portal</div>
         <div className={styles.accordion}><EmployeeAcc /></div>
         <div className={styles.dataBoxes}>
           <div className={styles.directions}>
