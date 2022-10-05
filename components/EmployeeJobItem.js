@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -17,19 +19,40 @@ export default function EmployeeJobList({job}) {
   const [address, setAddress] = React.useState('');
   const [show, setShow] = useState(false);
   const [notes, setNotes] = useState('');
+  const {user, error, isLoading } = useUser();
+
+  const assign = (user && user.role === 'Employer') ? (
+    <Dropdown>
+    <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+      Assign Employee
+    </Dropdown.Toggle>
+    <Dropdown.Menu>
+      <Dropdown.Item onClick={e => assignJob(e)} name="Jacob" href="#/action-1">Jacob</Dropdown.Item>
+      <Dropdown.Item onClick={e => assignJob(e)} name="Adam" href="#/action-2">Adam</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>) : (<></>);
 
   const addNotes = () => {
     const option = {
-      date: job.date,
-      notes: notes,
+      condition: {description: job.description},
+      change: {notes: notes},
     }
-    axios.put('http://localhost:8080/addNotes', option)
+    axios.put('http://localhost:8080/editjob', option)
       .then(() => {
         setNotes('');
         handleClose();
       })
       .catch((err) => console.error(err));
+  }
 
+  const assignJob = (e) => {
+    const option = {
+      condition: {description: job.description},
+      change: {assignedEmployee: e.target.name},
+    }
+    axios.put('http://localhost:8080/editjob', option)
+      .then(() => console.log('success'))
+      .catch((err) => console.error(err));
   }
 
   const handleClose = () => setShow(false);
@@ -83,7 +106,8 @@ export default function EmployeeJobList({job}) {
             <li>
               <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>{' '}
               <Button className={styles.accJobBtn} variant="outline-success" onClick={handleShow}>Add Notes</Button>
-              <Modal show={show} onHide={handleClose}>
+              {assign}
+          <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                   <Modal.Title>Add Job Notes</Modal.Title>
                 </Modal.Header>
