@@ -8,7 +8,6 @@ import JobImage from "../components/JobImage";
 import styles from "../styles/Jobs.module.css";
 
 export default function ClientJobList({ job }) {
-  console.log(job);
   return (
     <Accordion className={styles.job}>
       <AccordionSummary
