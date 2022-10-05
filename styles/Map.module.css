@@ -2,5 +2,6 @@
   border: lightslategray 3px solid;
   margin: .5vw;
   width: 44vw;
-  height: 41vh;
+  height: 50vh;
+  max-height: 50vh;
 }
