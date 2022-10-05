@@ -1,6 +1,16 @@
 .acc {
   width: 80vw;
 }
+.accList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 27.5vw;
+}
+.accJobBtn {
+  background-color: white;
+}
 .jobList {
   display: flex;
   flex-direction: column;
