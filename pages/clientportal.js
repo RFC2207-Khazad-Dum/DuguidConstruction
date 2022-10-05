@@ -16,7 +16,7 @@ export default function Jobs() {
   useEffect(() => {
     if (user) {
     axios
-      .get(`http://localhost:8080/getJobs/${user.email}`)
+      .get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/getJobs/${user.email}`)
       .then((response) => {
         console.log(response);
         setJobs(response.data);
@@ -51,9 +51,11 @@ export default function Jobs() {
           </div>
         </>
       ) : (
+        <div className={styles.pleaseLogIn}>
         <h1 className={styles.title}>
-          Please log in to view your current jobs.
+          Please <span className={styles.loginSpan}>log in</span> to view your current jobs.
         </h1>
+        </div>
       )}
     </>
   );
