@@ -18,9 +18,13 @@ export default function ClientJobList({ job }) {
         >
           <Typography><span className={styles.jobTitle}>{job.title}</span><br/>
           {/* <div className={styles.tags}> */}
-          {job.categories.map((category, index) => (
-            <span key={index} className={styles[category]}>{category}</span>
-          ))}
+          {job.categories.map((category, index) => {
+            if (index === 3) {
+              return <><span key={index} className={styles[category]}>{category}</span><br/></>
+            } else {
+            return <span key={index} className={styles[category]}>{category}</span>
+            }
+})}
           {/* </div> */}
           </Typography>
         </AccordionSummary>
