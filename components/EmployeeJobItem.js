@@ -93,7 +93,24 @@ export default function EmployeeJobList({job}) {
           >
             <Typography>{job.title || 'Job Title'}
             <br />
-            {job.categories.map((category, index) => <span key={index} className={styles.active}>{category}</span>)}
+            {job.categories.map((category, index) => {
+            if (index === 3) {
+              return (
+                <>
+                  <span key={index} className={styles[category]}>
+                    {category}
+                  </span>
+                  <br />
+                </>
+              );
+            } else {
+              return (
+                <span key={index} className={styles[category]}>
+                  {category}
+                </span>
+              );
+            }
+          })}
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={styles.accList}>
