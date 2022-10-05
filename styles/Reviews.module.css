@@ -52,6 +52,12 @@
   color: white;
 }
 
+.selectedCategory {
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+}
+
 .bottomButton {
   display: flex;
   flex-direction: column;

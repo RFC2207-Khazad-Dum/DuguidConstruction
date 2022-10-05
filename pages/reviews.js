@@ -103,6 +103,7 @@ const Reviews = () => {
       <div className={styles.topButtons}>
         <Button onClick={handleShow} variant="success" size="lg">Add Review</Button>
         <ReviewModal show={show} handleClose={handleClose} />
+        <div className={styles.selectedCategory}>{selected}</div>
         <Dropdown as={ButtonGroup} size="lg">
           <Dropdown.Toggle variant="success" id="dropdown-basic">Filter By</Dropdown.Toggle>
           <Dropdown.Menu>
@@ -152,7 +153,7 @@ const Reviews = () => {
                 </div>
               )
             })
-            : <div className={styles.noCategories}><p>There are no reviews for the {selected} category yet. Add one today!</p></div>
+            : <div className={styles.noCategories}><p>There are no reviews for this category yet. Add one today!</p></div>
         }
       </div>
       <div className={styles.bottomButton}>
