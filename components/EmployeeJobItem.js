@@ -76,6 +76,7 @@ export default function EmployeeJobList({job}) {
         setCoordinates([res.results[0].geometry.location.lat, res.results[0].geometry.location.lng])
         name.replace(' ', '+');
       })
+      .catch((err) => console.log(err))
       .then(() => { window.open(`https://www.google.com/maps/search/${name}/@${coordinates[0]},${coordinates[1]},17z`, '_blank', 'noopener,noreferrer')
       })
   };
@@ -106,7 +107,7 @@ export default function EmployeeJobList({job}) {
                   <b>Services</b>: Drywall, HVAC, Demolition
                 </Typography>
                 <Typography>
-                  <b>Location</b>: {job.address}
+                  <b>Location</b>: {job.address1}
                 </Typography>
                 <Typography>
                   <b>Assigned Employee</b>: {job.assignedEmployee}

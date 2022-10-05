@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 export default function EmployeeScheduleTable({jobs}) {
   return (
 
-      <Table striped bordered hover style={{backgroundColor: 'white', height: '5vh', 'overflow-x': 'hidden', 'overflow-y': 'auto'}}>
+      <Table striped bordered hover style={{backgroundColor: 'white', height: '5vh', 'overflowX': 'hidden', 'overflowY': 'auto'}}>
         <thead style={{backgroundColor: 'lightblue'}}>
           <tr>
             <th>Date</th>
