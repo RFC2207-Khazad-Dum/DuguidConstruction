@@ -13,7 +13,8 @@ export default class JobModal extends React.Component {
       client: this.props.email,
       title: "",
       categories: [],
-      address: "",
+      address1: "",
+      address2: "",
       city: "",
       state: "",
       zip: "",
@@ -45,6 +46,7 @@ export default class JobModal extends React.Component {
     console.log(this.state.categories);
   };
   handleSubmit = () => {
+    console.log(this.state);
     axios
       .post("http://localhost:8080/addjob", this.state)
       .then(this.props.handleClose)

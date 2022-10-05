@@ -8,6 +8,7 @@ import JobImage from '../components/JobImage'
 import styles from '../styles/Jobs.module.css'
 
 export default function ClientJobList({ job }) {
+  console.log(job);
   return (
       <Accordion className={styles.job}>
         <AccordionSummary
@@ -37,7 +38,7 @@ export default function ClientJobList({ job }) {
             })}
           </Typography>
           <Typography>
-            <b>Location</b>: {job.address}
+            <b>Location</b>: {job.address1}&nbsp;{job.address2},&nbsp;{job.city},&nbsp;{job.state}&nbsp;{job.zip}
           </Typography>
           <Typography>
             <b>Assigned Employee</b>: {job.assignedEmployee || 'Awaiting assignment'}
@@ -46,7 +47,6 @@ export default function ClientJobList({ job }) {
             <b>Attachments</b>:<br/> {job.media.map((url, index) => (
               <>
               <JobImage url={url} />
-              {/* <ImageModal url={url} show={show} handleClose={handleClose} /> */}
               </>
             ))}
           </Typography>

@@ -25,12 +25,12 @@ export default function JobModalForm({ handleInputChange, handleCheck, handleIma
 
     <Form.Group className="mb-3" controlId="formGridAddress1">
       <Form.Label>Address</Form.Label>
-      <Form.Control placeholder="1234 Main St" name="address" onChange={handleInputChange}/>
+      <Form.Control placeholder="1234 Main St" name="address1" onChange={handleInputChange}/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formGridAddress2">
       <Form.Label>Address 2</Form.Label>
-      <Form.Control placeholder="Apartment, studio, or floor" />
+      <Form.Control placeholder="Apartment, studio, or floor" name="address2" onChange={handleInputChange}/>
     </Form.Group>
 
     <Row className="mb-3">

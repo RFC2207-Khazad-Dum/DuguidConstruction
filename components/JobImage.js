@@ -9,7 +9,7 @@ export default function JobImage({ url }) {
   const handleShow = () => setShow(true);
   return (
     <>
-    <img src={url} onClick={handleShow} className={styles.jobGallery}/>
+    <img src={url} onClick={handleShow} className={styles.jobGallery} />
     <ImageModal url={url} show={show} handleClose={handleClose} />
     </>
   )
