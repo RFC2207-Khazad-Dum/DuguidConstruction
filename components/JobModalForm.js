@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import UploadWidget from './UploadWidget'
 
-export default function JobModalForm({ handleInputChange, handleCheck }) {
+export default function JobModalForm({ handleInputChange, handleCheck, handleImageUpload }) {
   return (
   <Form>
     <Row className="mb-3">
@@ -57,9 +58,7 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
       <Form.Control placeholder="Add brief description of desired services" name="description" onChange={handleInputChange}/>
     </Form.Group>
 
-    <Button variant="success">
-      + &nbsp;Add Image/Video
-    </Button>
+    <UploadWidget handleImageUpload={handleImageUpload}/>
   </Form>
   )
 }
