@@ -11,7 +11,7 @@ export default function Contact() {
       </Head>
       <div id={styles.mainContact}>
         <div id={styles.contactTitle}>
-            <h1 class="h1">Contact Us</h1>
+            <h1 className="h1">Contact Us</h1>
         </div>
         <div id={styles.contactInfo}>
           <div id={styles.opHours}>
