@@ -13,7 +13,8 @@ export default class JobModal extends React.Component {
       client: this.props.email,
       title: "",
       categories: [],
-      address: "",
+      address1: "",
+      address2: "",
       city: "",
       state: "",
       zip: "",
@@ -38,11 +39,17 @@ export default class JobModal extends React.Component {
   };
   handleCheck = (e) => {
     let temp = this.state.categories;
-    temp.push(e.target.name);
-    this.setState({
-      categories: temp,
-    });
-    console.log(this.state.categories);
+    if (temp.indexOf(e.target.name) !== -1) {
+      temp.splice(temp.indexOf(e.target.name), 1);
+      this.setState({
+        categories: temp
+      });
+    } else {
+      temp.push(e.target.name);
+      this.setState({
+        categories: temp
+      })
+    }
   };
   handleSubmit = () => {
     axios

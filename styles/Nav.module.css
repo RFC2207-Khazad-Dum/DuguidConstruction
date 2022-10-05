@@ -5,6 +5,7 @@
 .link {
   color: rgb(22, 22, 22) !important;
   font-size: 23px !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .link:hover {
   color: rgb(156, 132, 107) !important;
@@ -16,4 +17,5 @@
   border-radius: 5px;
   margin-right: 20% !important;
 }
+
 
