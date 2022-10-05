@@ -3,6 +3,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReviewModalForm from '../components/ReviewModalForm.js'
+import UploadWidget from '../components/UploadWidget';
+import PreviewGallery from '../components/PreviewGallery';
 
 export default class ReviewModal extends React.Component {
   constructor(props) {
@@ -20,6 +22,7 @@ export default class ReviewModal extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   handleInputChange = (e) => {
@@ -32,6 +35,7 @@ export default class ReviewModal extends React.Component {
       [name]: value,
     });
   }
+
   handleCheck = (e) => {
     let temp = this.state.categories;
     if (temp.indexOf(e.target.name) !== -1) {
@@ -46,6 +50,7 @@ export default class ReviewModal extends React.Component {
       })
     }
   }
+
   handleSubmit = () => {
     axios.post('http://localhost:8080/addreview', this.state)
       .then(() => {
@@ -55,6 +60,14 @@ export default class ReviewModal extends React.Component {
       .catch((err) => console.error(err));
   }
 
+  handleImageUpload = (url) => {
+    let tempMedia = this.state.img;
+    tempMedia.push(url);
+    this.setState({
+      img: tempMedia,
+    })
+  }
+
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.handleClose} centered>
@@ -62,7 +75,8 @@ export default class ReviewModal extends React.Component {
         <Modal.Title>Add A New Review</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ReviewModalForm handleInputChange={this.handleInputChange} handleCheck={this.handleCheck}/>
+        <ReviewModalForm handleInputChange={this.handleInputChange} handleCheck={this.handleCheck} handleImageUpload={this.handleImageUpload}/>
+        <PreviewGallery photos={this.state.img} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={this.props.handleClose}>
