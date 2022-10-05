@@ -50,10 +50,8 @@ export default class JobModal extends React.Component {
         categories: temp
       })
     }
-    console.log(this.state.categories);
   };
   handleSubmit = () => {
-    console.log(this.state);
     axios
       .post("http://localhost:8080/addjob", this.state)
       .then(this.props.handleClose)
