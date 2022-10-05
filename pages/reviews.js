@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
 import axios from 'axios';
 import styles from '../styles/Reviews.module.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReviewModal from '../components/ReviewModal.js'
+import ReviewModal from '../components/ReviewModal.js';
 
 const Reviews = () => {
   const [show, setShow] = useState(false);
@@ -100,6 +101,7 @@ const Reviews = () => {
 
   return (
     <div className={styles.reviewsContainer}>
+      <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
       <div className={styles.topButtons}>
         <Button onClick={handleShow} variant="success" size="lg">Add Review</Button>
         <ReviewModal show={show} handleClose={handleClose} />
@@ -132,8 +134,10 @@ const Reviews = () => {
                   <p>{date.toLocaleDateString()}</p>
                 </div>
                 <div>
-                  <img className={styles.imageThumbnail} src={review.img} />
-                </div>
+                    {review.img.length > 0 ? review.img.map((image, index) => {
+                      return (<img className={styles.imageThumbnail} key={index} src={image} />)
+                    }) : <></>}
+                  </div>
               </div>
             )
           }) : (isFiltered && displayedReviews.length > 0) ?
@@ -148,7 +152,9 @@ const Reviews = () => {
                     <p>{date.toLocaleDateString()}</p>
                   </div>
                   <div>
-                    <img className={styles.imageThumbnail} src={review.img} />
+                    {review.img.length > 0 ? review.img.map((image, index) => {
+                      return (<img className={styles.imageThumbnail} key={index} src={image} />)
+                    }) : <></>}
                   </div>
                 </div>
               )
