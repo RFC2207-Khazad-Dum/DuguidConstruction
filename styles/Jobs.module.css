@@ -117,3 +117,10 @@
   font-size: smaller;
   margin-right: 1%;
 }
+.jobGallery {
+  width: 10% !important;
+  margin-right: 3% !important;
+}
+.jobGallery:hover {
+  cursor: pointer;
+}

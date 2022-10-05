@@ -17,6 +17,7 @@
     "@react-google-maps/api": "^2.13.1",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
+    "cloudinary-react": "^1.8.1",
     "google-map-react": "^2.2.0",
     "mongoose": "^6.6.3",
     "next": "12.3.1",
