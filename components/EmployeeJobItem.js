@@ -27,11 +27,11 @@ export default function EmployeeJobList({job}) {
   const {user, error, isLoading } = useUser();
 
   const assign = (user && user.role === 'Employer') ? (
-    <Dropdown>
-    <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+    <Dropdown >
+    <Dropdown.Toggle variant="outline-success" id="dropdown-basic" className={styles.accJobBtn}>
       Assign Employee
     </Dropdown.Toggle>
-    <Dropdown.Menu>
+    <Dropdown.Menu >
       <Dropdown.Item onClick={e => assignJob(e)} name="Jacob" href="#/action-1">Jacob</Dropdown.Item>
       <Dropdown.Item onClick={e => assignJob(e)} name="Adam" href="#/action-2">Adam</Dropdown.Item>
     </Dropdown.Menu>
@@ -99,7 +99,7 @@ export default function EmployeeJobList({job}) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>{job.title || 'Job Title'}
+            <Typography className={styles.jobColumns}>{job.title || 'Job Title'}
             <br />
             {job.categories.map((category, index) => {
             if (index === 3) {
@@ -125,27 +125,27 @@ export default function EmployeeJobList({job}) {
             <ul className={styles.accList}>
               <li>
                 <Typography>
-                  <b>Description</b>{`: ${job.description}`||`: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                  <span className={styles.jobColumns}>Description:</span>{` ${job.description}`||`: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                   malesuada lacus ex, sit amet blandit leo lobortis eget.`}
                 </Typography>
                 <Typography>
-                  <b>Services</b>: Drywall, HVAC, Demolition
+                  {job.media.map((img, index) => <JobImage key={index} url={img} />)}
                 </Typography>
                 <Typography>
-                  <b>Location</b>: {job.address1}
+                  <span className={styles.jobColumns}>Location:</span> {job.address1}
                 </Typography>
                 <Typography>
-                  <b>Assigned Employee</b>: {job.assignedEmployee || 'None'}
+                  <span className={styles.jobColumns}>Assigned Employee:</span> {job.assignedEmployee || 'None'}
                 </Typography>
                 {job.notes.map((note, index) =>
                   <Typography key={index}>
-                    <b>Note</b>: {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                    <span className={styles.jobColumns}>Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
                   </Typography>
                 ) || 'no notes...'}
-
               </li>
               <li>
-                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>{' '}
+                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>
+
                 <Button className={styles.accJobBtn} variant="outline-success" onClick={handleShow}>Add Notes</Button>
                 {assign}
                 <Modal show={show} onHide={handleClose}>
