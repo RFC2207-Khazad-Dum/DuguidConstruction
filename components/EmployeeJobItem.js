@@ -47,7 +47,7 @@ export default function EmployeeJobList({job}) {
         }
       },
     }
-    axios.put('http://localhost:8080/editjob', option)
+    axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => {
         setNotes('');
         setImages([]);
@@ -68,7 +68,7 @@ export default function EmployeeJobList({job}) {
       condition: {description: job.description},
       change: {assignedEmployee: e.target.name},
     }
-    axios.put('http://localhost:8080/editjob', option)
+    axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => console.log('success'))
       .catch((err) => console.error(err));
   }

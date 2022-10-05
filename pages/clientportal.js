@@ -16,7 +16,7 @@ export default function Jobs() {
   useEffect(() => {
     if (user) {
     axios
-      .get(`http://localhost:8080/getJobs/${user.email}`)
+      .get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/getJobs/${user.email}`)
       .then((response) => {
         console.log(response);
         setJobs(response.data);

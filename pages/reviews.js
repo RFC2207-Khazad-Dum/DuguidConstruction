@@ -21,7 +21,7 @@ const Reviews = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/reviews')
+    axios.get('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/reviews')
       .then(response => {
         console.log('show data =', response.data);
         const firstThree = [];
@@ -44,7 +44,7 @@ const Reviews = () => {
   const handleSelect = (event) => {
     setSelected(event.target.name);
     if (event.target.name === "All") {
-      axios.get('http://localhost:8080/reviews')
+      axios.get('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/reviews')
       .then(response => {
         setIsFiltered(true)
         const firstThree = [];
@@ -64,7 +64,7 @@ const Reviews = () => {
         console.log(err);
       })
     } else {
-      axios.get(`http://localhost:8080/filterreviews/${event.target.name}`)
+      axios.get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/filterreviews/${event.target.name}`)
       .then(response => {
         setIsFiltered(true)
         const firstThree = [];
