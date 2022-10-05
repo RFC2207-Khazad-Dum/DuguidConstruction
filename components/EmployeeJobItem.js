@@ -1,6 +1,8 @@
 import { useUser } from '@auth0/nextjs-auth0';
 import Script from 'next/script'
 import UploadWidget from './UploadWidget';
+import PreviewGallery from './PreviewGallery';
+import JobImage from './JobImage';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -21,6 +23,7 @@ export default function EmployeeJobList({job}) {
   const [address, setAddress] = React.useState('');
   const [show, setShow] = useState(false);
   const [notes, setNotes] = useState('');
+  const [images, setImages] = useState([]);
   const {user, error, isLoading } = useUser();
 
   const assign = (user && user.role === 'Employer') ? (
@@ -37,14 +40,27 @@ export default function EmployeeJobList({job}) {
   const addNotes = () => {
     const option = {
       condition: {description: job.description},
-      change: {notes: notes},
+      change: {
+        notes: {
+          note: notes,
+          img: images
+        }
+      },
     }
     axios.put('http://localhost:8080/editjob', option)
       .then(() => {
         setNotes('');
+        setImages([]);
         handleClose();
       })
       .catch((err) => console.error(err));
+  }
+
+  const addImages = (url) => {
+    let temp = images;
+    temp.push(url);
+    setImages(temp);
+    console.log('These are the images in state:, ', images)
   }
 
   const assignJob = (e) => {
@@ -55,14 +71,6 @@ export default function EmployeeJobList({job}) {
     axios.put('http://localhost:8080/editjob', option)
       .then(() => console.log('success'))
       .catch((err) => console.error(err));
-  }
-
-  const handleImageUpload = (url) => {
-    const option = {
-      description: job.description,
-      media: notes,
-    }
-    axios.put('http://localhost:8080/employeeimage', )
   }
 
   const handleClose = () => setShow(false);
@@ -127,14 +135,14 @@ export default function EmployeeJobList({job}) {
                   <b>Location</b>: {job.address1}
                 </Typography>
                 <Typography>
-                  <b>Assigned Employee</b>: {job.assignedEmployee}
+                  <b>Assigned Employee</b>: {job.assignedEmployee || 'None'}
                 </Typography>
-                <Typography>
-                  <b>Attachments</b>: Some pictures
-                </Typography>
-                <Typography>
-                  <b>Notes</b>: {job.notes || 'no notes...'}
-                </Typography>
+                {job.notes.map((note, index) =>
+                  <Typography key={index}>
+                    <b>Note</b>: {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                  </Typography>
+                ) || 'no notes...'}
+
               </li>
               <li>
                 <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>{' '}
@@ -146,9 +154,10 @@ export default function EmployeeJobList({job}) {
                   </Modal.Header>
                   <Modal.Body>
                     <Form.Control type="text" placeholder="Add notes on job here..." onChange={(e) => setNotes(e.target.value)}/>
+                    <PreviewGallery photos={images} />
                   </Modal.Body>
                   <Modal.Footer>
-                    <UploadWidget handleImageUpload={handleImageUpload}/>
+                    <UploadWidget handleImageUpload={addImages}/>
                     <Button variant="secondary" onClick={handleClose}>
                       Close
                     </Button>
