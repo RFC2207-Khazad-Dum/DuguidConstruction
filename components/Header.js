@@ -26,10 +26,6 @@ const Header = () => {
             src={images.img1}
             alt="First slide"
           />
-          <Carousel.Caption>
-            <h1>First slide label</h1>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -37,11 +33,6 @@ const Header = () => {
             src={images.img2}
             alt="Second slide"
           />
-
-          <Carousel.Caption>
-            <h1>Second slide label</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -49,11 +40,6 @@ const Header = () => {
             src={images.img3}
             alt="Third slide"
           />
-
-          <Carousel.Caption>
-            <h1>Third slide label</h1>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -61,11 +47,6 @@ const Header = () => {
             src={images.img4}
             alt="Third slide"
           />
-
-          <Carousel.Caption>
-            <h1>Fourth slide label</h1>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </div>
