@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: tan;
+  background-color: rgba(208, 176, 134, 0.65);
   font-size: xx-large;
   font-weight: bold;
   padding: 40px;
@@ -16,7 +16,7 @@
 }
 
 .button {
-  background-color: rgb(42, 85, 165);
+  background-color: rgba(21, 56, 127, 0.831);
   width: 200px;
   height: 50px;
   font-size: large;
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: rgb(42, 85, 165);
+  background-color: rgba(21, 56, 127, 0.831);
   padding: 40px;
   width: 100%;
   color: white;
@@ -37,7 +37,7 @@
 
 .contactInfo p {
   padding-top: 15px;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 200;
 }
 
