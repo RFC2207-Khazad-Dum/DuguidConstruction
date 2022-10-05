@@ -21,9 +21,9 @@
 }
 
 .review {
-  border: 2px solid tan;
+  border: 2px solid rgba(224, 204, 176);
   border-radius: 15px;
-  background-color: tan;
+  background-color: rgba(224, 204, 176);
   padding: 40px;
   margin-bottom: 20px;
   width: 50%;
@@ -43,7 +43,7 @@
   font-weight: bold;
   font-size: x-large;
   padding-bottom: 10px;
-  color: rgb(42, 85, 165);
+  color: rgba(21, 56, 127, 0.831);
 }
 
 .noCategories {
@@ -66,12 +66,17 @@
   padding-bottom: 40px;
 }
 
-.imageThumbnail {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin-inline: 0px 13px;
+.categoryContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.categoryItem {
+  background-color: rgb(233, 177, 75);
+  border: 2px solid orange;
+  border-radius: 15px;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   margin-top: 10px;
-  padding: 4px;
-  border: 1px solid black;
 }
