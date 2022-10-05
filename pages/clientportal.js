@@ -54,7 +54,7 @@ export default function Jobs() {
               <ClientJobItem key={index} job={job} />
             ))}
             <button className={styles.addJobBtn} onClick={handleShow}>
-              + &nbsp;Add a Job
+              + &nbsp;ADD A JOB
             </button>
             <JobModal show={show} handleClose={handleClose} email={user.email}/>
           </div>

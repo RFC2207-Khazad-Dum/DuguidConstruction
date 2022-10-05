@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import states from './StateList'
-import services from './Services'
+import states from './StateList';
+import services from './Services';
+import UploadWidget from './UploadWidget';
 
-export default function ReviewModalForm({ handleInputChange, handleCheck }) {
+export default function ReviewModalForm({ handleInputChange, handleCheck, handleImageUpload }) {
   return (
     <Form>
       <Row className="mb-3">
@@ -58,9 +59,7 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
         <Form.Text>Min. 20 Characters</Form.Text>
       </Form.Group>
 
-      <Button variant="success">
-        + &nbsp;Add Image/Video
-      </Button>
+      <UploadWidget handleImageUpload={handleImageUpload}/>
     </Form>
   )
 }
