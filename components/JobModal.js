@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import JobModalForm from "../components/JobModalForm";
 import UploadWidget from '../components/UploadWidget';
-import PreviewGallery from '../components/PreviewGallery'
+import PreviewGallery from '../components/PreviewGallery';
+import Geocode from 'react-geocode';
 
 export default class JobModal extends React.Component {
   constructor(props) {
@@ -13,6 +14,9 @@ export default class JobModal extends React.Component {
       client: this.props.email,
       title: "",
       categories: [],
+      coordinates: { lat: null, lng: null },
+      lat: 0,
+      lng: 0,
       address1: "",
       address2: "",
       city: "",
@@ -51,12 +55,27 @@ export default class JobModal extends React.Component {
       })
     }
   };
+
   handleSubmit = () => {
-    axios
-      .post("http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/addjob", this.state)
-      .then(this.props.handleClose)
-      .catch((err) => console.error(err));
+    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+    var latVal;
+    var lngVal;
+    Geocode.fromAddress(`${this.state.address1} + ${this.state.city}`)
+    .then((res) => {
+      latVal = res.results[0].geometry.location.lat.toString();
+      lngVal = res.results[0].geometry.location.lng.toString();
+      this.setState({
+        lat: latVal,
+        lng: lngVal,
+        coordinates: { lat: latVal, lng: lngVal },
+      })
+      console.log('without state ref:', latVal, lngVal);
+      setTimeout(() => axios.post("http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/addjob", this.state), 250); // Temporary Fix
+    })
+    .then(this.props.handleClose)
+    .catch((err) => console.error(err));
   };
+
   handleImageUpload = (url) => {
     let tempMedia = this.state.media;
     tempMedia.push(url);

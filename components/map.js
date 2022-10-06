@@ -7,53 +7,53 @@ import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import Geocode from 'react-geocode';
 
-export default function Map({ listOfMarkers, jobs }){
-  const [coordinates, setCoordinates] = React.useState([]);
+export default function Map({ jobs }){
+  const [coordinates, setCoordinates] = React.useState([{ lat: 39.0473, lng: -95.6752 }]);
+  const [addresses, setAddresses] = React.useState([]);
+  const [count, setCount] = React.useState(1);
 
   const center = useMemo(() => ({ lat: 39.0473, lng: -95.6752 }), [])
 
   const iconPic = 'https://openclipart.org/image/50px/27069';
 
-  useEffect(() => {
-    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-    jobs.map((job) => {
-      Geocode.fromAddress(job.address1)
-      .then((res) => {
-        let temp = coordinates;
-        temp.push({lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng})
-        setCoordinates(temp);
-        })
-      })
-  }, [jobs, coordinates])
+  console.log('incoming jobs:', jobs);
+  console.log('held coordinates:', coordinates);
 
+  useEffect(() => {
+    // Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY)
+    // console.log('first wave of jobs:', jobs);
+    // let temp = coordinates;
+    // jobs.map((job) => {
+    //   Geocode.fromAddress(`${job.address1} + ${job.city}`)
+    //   .then((res) => {
+    //     console.log('these are coordinates', res);
+    //     const lat = res.results[0].geometry.location.lat;
+    //     const lng = res.results[0].geometry.location.lng;
+    //     temp.push({lat: lat, lng: lng})
+    //     })
+    //   .then(() => setCoordinates(temp))
+    //   .catch((err) => console.log(err));
+    //   })
+
+  }, [jobs])
   console.log(jobs);
   return (
     // Important! Always set the container height explicitly
       <GoogleMap
-        zoom={12}
+        zoom={11}
         center={center}
         mapContainerClassName={styles.map}
       >
-
           <MarkerF
           key={center.lat}
-          // id={'this is the coolest part'}
           position={center}
-          // onMouseOver={console.log('hovered')}
-          // onClick={console.log('clicked')}
-          icon={iconPic}
-
+          // icon={iconPic}
           />
-
-        {coordinates.map((coordinate, index) => (
+        {jobs.map((job, index) => (
             <MarkerF
             key={index}
-            // id={index}
-            position={{lat: coordinate.lat, lng: coordinate.lng}}
-            // onMouseOver={console.log('hovered')}
-            // onClick={console.log('clicked')}
-            icon={iconPic}
-
+            position={job.coordinates ? {lat: parseFloat(job.coordinates.lat), lng: parseFloat(job.coordinates.lng)} : null}
+            // icon={iconPic}
             />
         ))}
       </GoogleMap>

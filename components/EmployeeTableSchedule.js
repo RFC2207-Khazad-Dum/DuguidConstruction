@@ -5,8 +5,7 @@ import Table from 'react-bootstrap/Table';
 
 export default function EmployeeScheduleTable({jobs}) {
   return (
-
-      <Table striped bordered hover style={{backgroundColor: 'white', textAlign: 'left', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto'}}>
+      <Table striped='columns' size='lg' bordered hover style={{backgroundColor: 'white', textAlign: 'left', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto', fontSize: '1.4vw'}}>
         <thead style={{backgroundColor: 'lightblue'}}>
           <tr>
             <th style={{ width: '10vw' }}>Date</th>
@@ -19,14 +18,13 @@ export default function EmployeeScheduleTable({jobs}) {
           {jobs.map((job, index) => {
             return (
               <tr key={index}>
-                <td>{job.date.slice(0,10)}</td>
-                <td>{job.title}</td>
-                <td>{job.assignedEmployee}</td>
-                <td>{job.categories}</td>
+                <td style={{fontSize: '1.1vw'}}>{job.date.slice(0,10)}</td>
+                <td style={{fontSize: '1.1vw'}}>{job.title}</td>
+                <td style={{fontSize: '1.1vw'}}>{job.assignedEmployee}</td>
+                <td style={{fontSize: '1.1vw'}}>{job.categories}</td>
               </tr>)
           })}
         </tbody>
-
       </Table>
 
   )

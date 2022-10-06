@@ -6,7 +6,6 @@ import EmployeeAcc from '../components/EmployeeAccordion';
 import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
-
 import { useUser } from "@auth0/nextjs-auth0";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +13,7 @@ export default function Employees() {
   const [jobs, setJobs] = useState([]);
   const { user, error, isLoading } = useUser();
 
-  const employee = user ? <div className={styles.header}>- {user.name || 'Employee'} - Portal</div> : "Employee";
+  const employee = user ? <div className={styles.header}>{user.name || 'Employee'} Dashboard </div> : "Employee";
 
   useEffect(() => {
     if (user && user.role === "Employer") {
