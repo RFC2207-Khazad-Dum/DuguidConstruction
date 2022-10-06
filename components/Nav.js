@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import styles from '../styles/Nav.module.css';
-import { useUser } from '@auth0/nextjs-auth0';
-import Link from 'next/link';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React, { useState, useEffect } from "react";
+import styles from "../styles/Nav.module.css";
+import { useUser } from "@auth0/nextjs-auth0";
+import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Navigation = () => {
   const {user, error, isLoading } = useUser();
@@ -45,6 +45,6 @@ const Navigation = () => {
     </Container>
   </Navbar>
   );
-}
+};
 
 export default Navigation;
