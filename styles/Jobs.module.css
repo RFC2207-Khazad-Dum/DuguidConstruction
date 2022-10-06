@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   padding: 10%;
-  background-color: rgba(247, 245, 241, 0.385);
+  background-color: rgb(247, 247, 241);
 }
 .username {
   color: rgba(43, 60, 34, 0.634) !important;}
@@ -121,7 +121,7 @@
   margin-top: 5%;
 }
 .loginSpan {
-  color: rgba(43, 60, 34, 0.634);
+  color: rgba(61, 86, 48, 0.634);
   border-bottom: 2px solid rgba(43, 60, 34, 0.634);
 }
 
