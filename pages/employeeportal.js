@@ -6,16 +6,27 @@ import EmployeeAcc from '../components/EmployeeAccordion';
 import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
+
+import { useUser } from "@auth0/nextjs-auth0";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Employees() {
   const [jobs, setJobs] = useState([]);
+  const { user, error, isLoading } = useUser();
+
+  const employee = user ? <div className={styles.header}>- {user.name || 'Employee'} - Portal</div> : "Employee";
 
   useEffect(() => {
-    axios.get('http://localhost:8080/getAllJobs')
-      .then((response) => setJobs(response.data))
-      .catch((err) => console.error(err));
-  }, [jobs]);
+    if (user && user.role === "Employer") {
+      axios.get('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/getAllJobs')
+        .then((response) => setJobs(response.data))
+        .catch((err) => console.error(err));
+    } else if (user && user.role === "Employee") {
+      axios.get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/getJobs/employee/${user.given_name}`)
+        .then((response) => setJobs(response.data))
+        .catch((err) => console.error(err));
+    }
+  }, [user]);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -38,7 +49,7 @@ export default function Employees() {
         <img className={styles.happyWorkers} src="/img/happyworkers3.png"/>
       </div>
       <div>
-        <div className={styles.header}>- Employee Name Here - Portal</div>
+        {employee}
         <div className={styles.accordion}><EmployeeAcc jobs={jobs}/></div>
         <div className={styles.dataBoxes}>
           <div className={styles.directions}>

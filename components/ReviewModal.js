@@ -52,7 +52,7 @@ export default class ReviewModal extends React.Component {
   }
 
   handleSubmit = () => {
-    axios.post('http://localhost:8080/addreview', this.state)
+    axios.post('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/addreview', this.state)
       .then(() => {
         console.log('review sent');
         this.props.handleClose();
