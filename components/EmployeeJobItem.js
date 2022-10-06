@@ -1,6 +1,8 @@
 import { useUser } from '@auth0/nextjs-auth0';
 import Script from 'next/script'
 import UploadWidget from './UploadWidget';
+import PreviewGallery from './PreviewGallery';
+import JobImage from './JobImage';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -21,14 +23,15 @@ export default function EmployeeJobList({job}) {
   const [address, setAddress] = React.useState('');
   const [show, setShow] = useState(false);
   const [notes, setNotes] = useState('');
+  const [images, setImages] = useState([]);
   const {user, error, isLoading } = useUser();
 
   const assign = (user && user.role === 'Employer') ? (
-    <Dropdown>
-    <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+    <Dropdown >
+    <Dropdown.Toggle variant="outline-success" id="dropdown-basic" className={styles.accJobBtn}>
       Assign Employee
     </Dropdown.Toggle>
-    <Dropdown.Menu>
+    <Dropdown.Menu >
       <Dropdown.Item onClick={e => assignJob(e)} name="Jacob" href="#/action-1">Jacob</Dropdown.Item>
       <Dropdown.Item onClick={e => assignJob(e)} name="Adam" href="#/action-2">Adam</Dropdown.Item>
     </Dropdown.Menu>
@@ -37,14 +40,27 @@ export default function EmployeeJobList({job}) {
   const addNotes = () => {
     const option = {
       condition: {description: job.description},
-      change: {notes: notes},
+      change: {
+        notes: {
+          note: notes,
+          img: images
+        }
+      },
     }
-    axios.put('http://localhost:8080/editjob', option)
+    axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => {
         setNotes('');
+        setImages([]);
         handleClose();
       })
       .catch((err) => console.error(err));
+  }
+
+  const addImages = (url) => {
+    let temp = images;
+    temp.push(url);
+    setImages(temp);
+    console.log('These are the images in state:, ', images)
   }
 
   const assignJob = (e) => {
@@ -52,17 +68,9 @@ export default function EmployeeJobList({job}) {
       condition: {description: job.description},
       change: {assignedEmployee: e.target.name},
     }
-    axios.put('http://localhost:8080/editjob', option)
+    axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => console.log('success'))
       .catch((err) => console.error(err));
-  }
-
-  const handleImageUpload = (url) => {
-    const option = {
-      description: job.description,
-      media: notes,
-    }
-    axios.put('http://localhost:8080/employeeimage', )
   }
 
   const handleClose = () => setShow(false);
@@ -91,7 +99,7 @@ export default function EmployeeJobList({job}) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>{job.title || 'Job Title'}
+            <Typography className={styles.jobColumns}>{job.title || 'Job Title'}
             <br />
             {job.categories.map((category, index) => {
             if (index === 3) {
@@ -117,27 +125,27 @@ export default function EmployeeJobList({job}) {
             <ul className={styles.accList}>
               <li>
                 <Typography>
-                  <b>Description</b>{`: ${job.description}`||`: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                  <span className={styles.jobColumns}>Description:</span>{` ${job.description}`||`: Ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                   malesuada lacus ex, sit amet blandit leo lobortis eget.`}
                 </Typography>
                 <Typography>
-                  <b>Services</b>: Drywall, HVAC, Demolition
+                  {job.media.map((img, index) => <JobImage key={index} url={img} />)}
                 </Typography>
                 <Typography>
-                  <b>Location</b>: {job.address1}
+                  <span className={styles.jobColumns}>Location:</span> {job.address1}
                 </Typography>
                 <Typography>
-                  <b>Assigned Employee</b>: {job.assignedEmployee}
+                  <span className={styles.jobColumns}>Assigned Employee:</span> {job.assignedEmployee || 'None'}
                 </Typography>
-                <Typography>
-                  <b>Attachments</b>: Some pictures
-                </Typography>
-                <Typography>
-                  <b>Notes</b>: {job.notes.note || 'no notes...'}
-                </Typography>
+                {job.notes.map((note, index) =>
+                  <Typography key={index}>
+                    <span className={styles.jobColumns}>Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                  </Typography>
+                ) || 'no notes...'}
               </li>
               <li>
-                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>{' '}
+                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>
+
                 <Button className={styles.accJobBtn} variant="outline-success" onClick={handleShow}>Add Notes</Button>
                 {assign}
                 <Modal show={show} onHide={handleClose}>
@@ -146,9 +154,10 @@ export default function EmployeeJobList({job}) {
                   </Modal.Header>
                   <Modal.Body>
                     <Form.Control type="text" placeholder="Add notes on job here..." onChange={(e) => setNotes(e.target.value)}/>
+                    <PreviewGallery photos={images} />
                   </Modal.Body>
                   <Modal.Footer>
-                    <UploadWidget handleImageUpload={handleImageUpload}/>
+                    <UploadWidget handleImageUpload={addImages}/>
                     <Button variant="secondary" onClick={handleClose}>
                       Close
                     </Button>
