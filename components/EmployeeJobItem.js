@@ -69,7 +69,6 @@ export default function EmployeeJobList({job}) {
       change: {assignedEmployee: e.target.name},
     }
     axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
-      .then(() => console.log('success'))
       .catch((err) => console.error(err));
   }
 
@@ -79,11 +78,12 @@ export default function EmployeeJobList({job}) {
   const handleDirectionsClick = function(e) {
     let name = e.target.getAttribute('tag');
     Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-    Geocode.fromAddress(name)
+    Geocode.fromAddress(name.toString())
       .then((res) => {
         setCoordinates([res.results[0].geometry.location.lat, res.results[0].geometry.location.lng])
         name.replace(' ', '+');
       })
+      .catch((err) => console.log(err))
       .then(() => { window.open(`https://www.google.com/maps/search/${name}/@${coordinates[0]},${coordinates[1]},17z`, '_blank', 'noopener,noreferrer')
       })
   };
@@ -143,7 +143,8 @@ export default function EmployeeJobList({job}) {
                 ) || 'no notes...'}
               </li>
               <li>
-                <Button className={styles.accJobBtn} tag={`${job.address1}, ${job.city}`} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>{' '}
+                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>
+
                 <Button className={styles.accJobBtn} variant="outline-success" onClick={handleShow}>Add Notes</Button>
                 {assign}
                 <Modal show={show} onHide={handleClose}>
