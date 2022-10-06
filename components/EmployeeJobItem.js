@@ -133,7 +133,7 @@ export default function EmployeeJobList({job}) {
                   <b>Attachments</b>: Some pictures
                 </Typography>
                 <Typography>
-                  <b>Notes</b>: {job.notes || 'no notes...'}
+                  <b>Notes</b>: {job.notes.note || 'no notes...'}
                 </Typography>
               </li>
               <li>
