@@ -10,6 +10,8 @@ import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewModal from '../components/ReviewModal.js';
 import JobImage from "../components/JobImage";
+import ContactUs from '../components/ContactUs.js';
+
 
 const Reviews = () => {
   const [show, setShow] = useState(false);
@@ -101,6 +103,11 @@ const Reviews = () => {
 
   return (
     <div className={styles.reviewsContainer}>
+      <div id={styles.image}>
+        <img className={styles.writing} src="/img/writing1.png"/>
+        <img className={styles.writing} src="/img/writing2.png"/>
+        <img className={styles.writing} src="/img/writing3.png"/>
+      </div>
       <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
       <div className={styles.topButtons}>
         <Button onClick={handleShow} variant="success" size="lg">Add Review</Button>
@@ -175,6 +182,7 @@ const Reviews = () => {
       <div className={styles.bottomButton}>
         {nextReviews.length > 0 ? <Button variant="success" size="lg" onClick={handleMoreReviews}>See More Reviews</Button> : <></>}
       </div>
+      <ContactUs/>
     </div>
   );
 }

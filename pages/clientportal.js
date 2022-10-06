@@ -8,6 +8,7 @@ import ClientJobItem from "../components/ClientJobItem";
 import styles from "../styles/Jobs.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import ContactUs from '../components/ContactUs.js';
 
 export default function Jobs() {
   const { user, error, isLoading } = useUser();
@@ -29,6 +30,11 @@ export default function Jobs() {
   const handleShow = () => setShow(true);
   return (
     <>
+        <div id={styles.image}>
+          <img className={styles.worker} src="/img/construction_worker.jpeg"/>
+          <img className={styles.worker} src="/img/worker2.png"/>
+          <img className={styles.worker} src="/img/worker3.png"/>
+        </div>
       {user ? (
         <>
         <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
@@ -36,6 +42,9 @@ export default function Jobs() {
             <title>Duguid Construction</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
+          <div id={styles.image}>
+            <img className={styles.phoneCall} src="/img/smiling woman.jpeg"/>
+          </div>
           <div className={styles.jobList}>
             <h1 className={styles.title}>
               <span className={styles.username}>{user.name}&#39;s</span> Current
@@ -55,6 +64,7 @@ export default function Jobs() {
           Please log in to view your current jobs.
         </h1>
       )}
+      <ContactUs/>
     </>
   );
 }

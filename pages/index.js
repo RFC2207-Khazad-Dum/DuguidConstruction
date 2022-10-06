@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Testimonial from '../components/Testimonial'
+import Header from '../components/Header.js'
+import ContactUs from '../components/ContactUs.js';
 
 export default function Home() {
   return (
@@ -11,6 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.aboutContainer}>
+        <Header />
         <h1 className={styles.aboutTitle}>Our Story</h1>
         <div className={styles.infoContainer}>
           <p className={styles.info}>Duguid Construction is a 50 year old residential and farming construction business engaging in jobs of all shapes and sizes. Our company has a particular focus on building client relationships by providing high quality work. The different types of jobs we provide include:</p>
@@ -27,6 +30,7 @@ export default function Home() {
         </div>
       </div>
       <Testimonial/>
+      <ContactUs/>
     </div>
   )
 }
