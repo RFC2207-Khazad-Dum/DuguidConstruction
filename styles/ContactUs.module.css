@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(222, 205, 179);
+  background-color: rgb(247, 247, 241)!important;
   font-size: xx-large;
   font-weight: bold;
   padding: 40px;

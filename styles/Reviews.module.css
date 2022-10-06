@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: rgb(124, 131, 116);
+  background-color: rgba(61, 86, 48, 0.634);
 }
 
 .topButtons {
@@ -26,9 +26,9 @@
 }
 
 .review {
-  border: 2px solid rgba(224, 204, 176);
+  border: 2px solid transparent;
   border-radius: 15px;
-  background-color: rgba(224, 204, 176);
+  background-color: rgb(247, 247, 241)!important;
   padding: 40px;
   margin-bottom: 20px;
   width: 50%;

@@ -1,8 +1,8 @@
 #mainContact {
   height: 55%;
   padding: 20px;
-  background-color: rgb(21, 56, 127, 0.831);
-  color: white;
+  background-color: rgb(247, 247, 241);
+  color: rgb(21, 56, 127, 0.831);
 }
 
 #image {
@@ -22,6 +22,7 @@
   flex-direction: row;
   align-items: center;
   height: 50%;
+  color: rgb(35, 35, 35);
 }
 
 #contactTitle {
@@ -31,10 +32,11 @@
 }
 
 #contactTitle h1 {
-  font-size: 75px;
+  font-size: 65px;
 }
 
 #contactBasic {
+  align-self: flex-start;
   display: inline-block;
   width: 50%;
 }
@@ -53,7 +55,6 @@
   display: inline-block;
   width: 50%;
   padding-left: 2rem;
-  padding-top: 18px;
 }
 
 #opHours h3 {
