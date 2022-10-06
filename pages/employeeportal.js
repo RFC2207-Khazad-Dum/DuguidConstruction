@@ -14,7 +14,7 @@ export default function Employees() {
   const [jobs, setJobs] = useState([]);
   const { user, error, isLoading } = useUser();
 
-  const employee = user ? <div className={styles.header}>- {user.name || 'Employee'} - Portal</div> : "Employee";
+  const employee = user ? <div className={styles.header}> {user.name || 'Employee'} Portal</div> : "Employee";
 
   useEffect(() => {
     if (user && user.role === "Employer") {

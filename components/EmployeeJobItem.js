@@ -138,8 +138,8 @@ export default function EmployeeJobList({job}) {
                   <span className={styles.jobColumns}>Assigned Employee:</span> {job.assignedEmployee || 'None'}
                 </Typography>
                 {job.notes.map((note, index) =>
-                  <Typography key={index}>
-                    <span className={styles.jobColumns}>Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                  <Typography className={styles.notes} key={index}>
+                    <span className={styles.jobColumns} >Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
                   </Typography>
                 ) || 'no notes...'}
               </li>

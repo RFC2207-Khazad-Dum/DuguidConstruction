@@ -22,7 +22,7 @@ export default function EmployeeScheduleTable({jobs}) {
                 <td>{job.date.slice(0,10)}</td>
                 <td>{job.title}</td>
                 <td>{job.assignedEmployee}</td>
-                <td>{job.categories}</td>
+                <td>{job.categories.join(' ')}</td>
               </tr>)
           })}
         </tbody>

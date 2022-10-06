@@ -17,6 +17,9 @@
 .jobColumns {
   font-weight: 600 !important;
 }
+.notes {
+  border: 1px solid black;
+}
 .jobList {
   display: flex;
   flex-direction: column;
