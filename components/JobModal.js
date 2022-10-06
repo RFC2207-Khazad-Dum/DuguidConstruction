@@ -15,8 +15,6 @@ export default class JobModal extends React.Component {
       title: "",
       categories: [],
       coordinates: { lat: null, lng: null },
-      lat: 0,
-      lng: 0,
       address1: "",
       address2: "",
       city: "",
@@ -65,8 +63,6 @@ export default class JobModal extends React.Component {
       latVal = res.results[0].geometry.location.lat.toString();
       lngVal = res.results[0].geometry.location.lng.toString();
       this.setState({
-        lat: latVal,
-        lng: lngVal,
         coordinates: { lat: latVal, lng: lngVal },
       })
       console.log('without state ref:', latVal, lngVal);
