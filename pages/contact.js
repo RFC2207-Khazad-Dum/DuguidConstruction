@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Contact.module.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Contact() {
   return (
@@ -9,9 +10,14 @@ export default function Contact() {
         <title>Duguid Construction</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div id={styles.image}>
+        <img className={styles.phoneCall} src="/img/woman-phone.png"/>
+        <img className={styles.phoneCall} src="/img/smiling woman.jpeg"/>
+        <img className={styles.phoneCall} src="/img/man-phone.png"/>
+      </div>
       <div id={styles.mainContact}>
         <div id={styles.contactTitle}>
-            <h1 class="h1">Contact Us</h1>
+            <h1 className="h1">Contact Us</h1>
         </div>
         <div id={styles.contactInfo}>
           <div id={styles.opHours}>

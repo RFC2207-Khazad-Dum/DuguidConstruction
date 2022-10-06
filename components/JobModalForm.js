@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import UploadWidget from './UploadWidget'
 
-export default function JobModalForm({ handleInputChange, handleCheck }) {
+export default function JobModalForm({ handleInputChange, handleCheck, handleImageUpload }) {
   return (
   <Form>
     <Row className="mb-3">
@@ -16,20 +17,20 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
       </Form.Group>
       <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
     <Form.Label>Select Require Services</Form.Label>
-      {services.map((service) => (
-      <Form.Check type="checkbox" label={service} name={service} onChange={handleCheck} isValid />
+      {services.map((service, index) => (
+      <Form.Check key={index} type="checkbox" label={service} name={service} onChange={handleCheck} isValid />
       ))}
     </Form.Group>
     </Row>
 
     <Form.Group className="mb-3" controlId="formGridAddress1">
       <Form.Label>Address</Form.Label>
-      <Form.Control placeholder="1234 Main St" name="address" onChange={handleInputChange}/>
+      <Form.Control placeholder="1234 Main St" name="address1" onChange={handleInputChange}/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formGridAddress2">
       <Form.Label>Address 2</Form.Label>
-      <Form.Control placeholder="Apartment, studio, or floor" />
+      <Form.Control placeholder="Apartment, studio, or floor" name="address2" onChange={handleInputChange}/>
     </Form.Group>
 
     <Row className="mb-3">
@@ -42,8 +43,8 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
         <Form.Label>State</Form.Label>
         <Form.Select defaultValue="Choose..." name="state" onChange={handleInputChange}>
           <option>Choose...</option>
-          {states.map(state =>
-          <option>{state}</option>)}
+          {states.map((state, index) =>
+          <option key={index}>{state}</option>)}
         </Form.Select>
       </Form.Group>
 
@@ -57,9 +58,7 @@ export default function JobModalForm({ handleInputChange, handleCheck }) {
       <Form.Control placeholder="Add brief description of desired services" name="description" onChange={handleInputChange}/>
     </Form.Group>
 
-    <Button variant="success">
-      + &nbsp;Add Image/Video
-    </Button>
+    <UploadWidget handleImageUpload={handleImageUpload}/>
   </Form>
   )
 }

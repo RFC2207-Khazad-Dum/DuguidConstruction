@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import states from './StateList'
-import services from './Services'
+import states from './StateList';
+import services from './Services';
+import UploadWidget from './UploadWidget';
 
-export default function ReviewModalForm({ handleInputChange, handleCheck }) {
+export default function ReviewModalForm({ handleInputChange, handleCheck, handleImageUpload }) {
   return (
     <Form>
       <Row className="mb-3">
@@ -28,8 +29,8 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
 
         <Form.Group className="mb-3" as={Col} id="formGridCheckbox">
           <Form.Label>Select the services rendered</Form.Label>
-            {services.map((service) => (
-            <Form.Check name={service} type="checkbox" label={service} isValid onChange={handleCheck}/>
+            {services.map((service, index) => (
+            <Form.Check key={index} name={service} type="checkbox" label={service} isValid onChange={handleCheck}/>
             ))}
         </Form.Group>
       </Row>
@@ -45,8 +46,8 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
           <Form.Label>State where services were provided</Form.Label>
           <Form.Select name="state" defaultValue="Choose..." onChange={handleInputChange}>
             <option>Choose...</option>
-            {states.map(state =>
-            <option>{state}</option>)}
+            {states.map((state, index) =>
+            <option key={index}>{state}</option>)}
           </Form.Select>
         </Form.Group>
 
@@ -58,9 +59,7 @@ export default function ReviewModalForm({ handleInputChange, handleCheck }) {
         <Form.Text>Min. 20 Characters</Form.Text>
       </Form.Group>
 
-      <Button variant="success">
-        + &nbsp;Add Image/Video
-      </Button>
+      <UploadWidget handleImageUpload={handleImageUpload}/>
     </Form>
   )
 }

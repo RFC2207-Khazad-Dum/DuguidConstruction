@@ -1,8 +1,8 @@
 .aboutContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgb(118, 89, 59);
-  color: white;
+  background-color:rgba(247, 247, 241, 0.461)!important;
+  color: rgb(35, 35, 35);
 }
 
 .aboutTitle {
