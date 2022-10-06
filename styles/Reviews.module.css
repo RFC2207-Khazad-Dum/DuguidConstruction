@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: rgb(118, 89, 59);
+  background-color: rgb(124, 131, 116);
 }
 
 .topButtons {
@@ -10,6 +10,11 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding: 40px;
+}
+
+.reviewButton {
+  background-color: rgb(21, 56, 127, 0.831) !important;
+  border: transparent solid 0px !important;
 }
 
 .reviewFeed {
@@ -94,3 +99,83 @@
   object-fit: cover;
 }
 
+.Carpentry {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(222, 167, 133, 0.354);
+  color: rgb(55, 41, 0);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Painting {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(222, 221, 133, 0.354);
+  color: rgb(49, 55, 0);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Plumbing {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(133, 222, 207, 0.354);
+  color: rgb(0, 21, 55);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Electrical {
+  border: 1px solid rgb(52, 50, 0);
+  background-color: rgba(222, 133, 222, 0.354);
+  color: rgb(11, 0, 55);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Drywall {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(222, 184, 133, 0.354);
+  color: rgb(55, 47, 0);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Concrete {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(148, 148, 148, 0.852);
+  color: black;
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.Demolition {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(222, 133, 161, 0.354);
+  color: rgb(55, 0, 53);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.HVAC {
+  border: 1px solid rgb(11, 52, 0);
+  background-color: rgba(155, 133, 222, 0.295);
+  color: rgb(24, 0, 55);
+  border-radius: 8px;
+  padding: 1%;
+  font-size: smaller;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}

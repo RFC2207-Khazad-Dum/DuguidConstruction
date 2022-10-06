@@ -17,10 +17,10 @@ const Navigation = () => {
   return (
     <Navbar bg="light" expand="lg" className={styles.coloredNav}>
     <Container>
-    <Navbar.Brand href="#home">
+    <Navbar.Brand href="/">
             <img
               alt="Duguid Construction Logo"
-              src="/img/dc-logo.png"
+              src="/img/DuguidLogo.png"
               className={styles.logo}
             />
           </Navbar.Brand>
@@ -38,7 +38,7 @@ const Navigation = () => {
           <Nav.Link href='/api/auth/login' className={styles.link}>LOGIN</Nav.Link>
         )}
          {user ? (
-              <p className={styles.link}>{user.email}</p>
+            <Nav.Link className={styles.user}>{user.email}</Nav.Link>
           ) : null}
         </Nav>
       </Navbar.Collapse>

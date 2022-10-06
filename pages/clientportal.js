@@ -42,9 +42,6 @@ export default function Jobs() {
             <title>Duguid Construction</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          <div id={styles.image}>
-            <img className={styles.phoneCall} src="/img/smiling woman.jpeg"/>
-          </div>
           <div className={styles.jobList}>
             <h1 className={styles.title}>
               <span className={styles.username}>{user.name}&#39;s</span> Current

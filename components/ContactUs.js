@@ -11,7 +11,7 @@ const ContactUs = () => {
     <div className={styles.contactContainer}>
       <div className={styles.contact}>
         <h1>Let Us Get Started With Your Project Today!</h1>
-        <Button className={styles.button} variant="contained" size="large">Contact Us</Button>
+        <Button href="/contact" className={styles.button} variant="contained" size="large">Contact Us</Button>
       </div>
       <div className={styles.contactInfo}>
         <div>
