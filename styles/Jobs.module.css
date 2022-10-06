@@ -130,3 +130,24 @@
 .jobGallery:hover {
   cursor: pointer;
 }
+
+.pleaseLogIn {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.loginSpan {
+  color: rgba(43, 60, 34, 0.634);
+  border-bottom: 2px solid rgba(43, 60, 34, 0.634);
+}
+
+#image {
+  width: 100%;
+  height: 400px;
+}
+
+.worker {
+  width: 33.3%;
+  height: 100%;
+  object-fit: cover;
+}
