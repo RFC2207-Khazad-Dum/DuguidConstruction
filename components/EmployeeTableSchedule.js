@@ -6,13 +6,13 @@ import Table from 'react-bootstrap/Table';
 export default function EmployeeScheduleTable({jobs}) {
   return (
 
-      <Table striped bordered hover style={{backgroundColor: 'white', height: '5vh', 'overflowX': 'hidden', 'overflowY': 'auto'}}>
+      <Table striped bordered hover style={{backgroundColor: 'white', textAlign: 'left', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto'}}>
         <thead style={{backgroundColor: 'lightblue'}}>
           <tr>
-            <th>Date</th>
+            <th style={{ width: '10vw' }}>Date</th>
             <th>Job</th>
             <th>Employee</th>
-            <th>Category</th>
+            <th style={{ overflowWrap: 'break-word'}}>Category</th>
           </tr>
         </thead>
         <tbody>

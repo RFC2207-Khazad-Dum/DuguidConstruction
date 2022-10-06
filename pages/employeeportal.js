@@ -14,7 +14,7 @@ export default function Employees() {
     axios.get('http://localhost:8080/getAllJobs')
       .then((response) => setJobs(response.data))
       .catch((err) => console.error(err));
-  }, [jobs]);
+  }, []);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -36,7 +36,7 @@ export default function Employees() {
         <div className={styles.accordion}><EmployeeAcc jobs={jobs}/></div>
         <div className={styles.dataBoxes}>
           <div className={styles.directions}>
-            {isLoaded ? <Map /> : <div>Loading...</div>}
+            {isLoaded ? <Map jobs={jobs}/> : <div>Loading...</div>}
           </div>
           <div className={styles.hours}>
             <EmployeeScheduleTable jobs={jobs}/>
