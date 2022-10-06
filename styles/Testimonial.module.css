@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(43, 60, 34, 0.634);
+  background-color: rgba(61, 86, 48, 0.634);
   color: white;
 }
 
@@ -24,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   border: 2px solid white;
-  background-color: rgb(247, 245, 241);
+  background-color: rgb(247, 247, 241);
   color: black;
   border-radius: 5px;
   width: 28%;

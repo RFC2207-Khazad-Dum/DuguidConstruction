@@ -110,11 +110,11 @@ const Reviews = () => {
       </div>
       <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
       <div className={styles.topButtons}>
-        <Button onClick={handleShow} variant="success" size="lg">Add Review</Button>
+        <Button onClick={handleShow} className={styles.reviewButton} size="lg">Add Review</Button>
         <ReviewModal show={show} handleClose={handleClose} />
         <div className={styles.selectedCategory}>{selected}</div>
         <Dropdown as={ButtonGroup} size="lg">
-          <Dropdown.Toggle variant="success" id="dropdown-basic">Filter By</Dropdown.Toggle>
+          <Dropdown.Toggle className={styles.reviewButton} id="dropdown-basic">Filter By</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1" name="All Entries" onClick={handleSelect}>None (Show All Entries)</Dropdown.Item>
             <Dropdown.Item href="#/action-2" name="Carpentry" onClick={handleSelect}>Carpentry</Dropdown.Item>
@@ -142,7 +142,7 @@ const Reviews = () => {
                 </div>
                 <div className={styles.categoryContainer}>
                   {review.categories.map((category, index) => {
-                    return (<span key={index} className={styles.categoryItem}>{category}</span>)
+                    return (<span key={index} className={styles[category]}>{category}</span>)
                   })}
                 </div>
                 <div>
@@ -165,7 +165,7 @@ const Reviews = () => {
                   </div>
                   <div className={styles.categoryContainer}>
                     {review.categories.map((category, index) => {
-                      return (<span key={index} className={styles.categoryItem}>{category}</span>)
+                      return (<span key={index} className={styles[category]}>{category}</span>)
                     })}
                   </div>
                   <div>
@@ -180,7 +180,7 @@ const Reviews = () => {
         }
       </div>
       <div className={styles.bottomButton}>
-        {nextReviews.length > 0 ? <Button variant="success" size="lg" onClick={handleMoreReviews}>See More Reviews</Button> : <></>}
+        {nextReviews.length > 0 ? <Button className={styles.reviewButton} size="lg" onClick={handleMoreReviews}>See More Reviews</Button> : <></>}
       </div>
       <ContactUs/>
     </div>
