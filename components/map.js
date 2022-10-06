@@ -1,24 +1,39 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import GoogleMapReact from 'google-map-react';
 import styles from '../styles/Map.module.css';
-import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, MarkerF, InfoWindow } from '@react-google-maps/api';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Button from 'react-bootstrap/Button';
+import Popover from 'react-bootstrap/Popover';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+export default function Map({ jobs }){
+  const center = useMemo(() => ({ lat: 39.0473, lng: -95.6752 }), [])
 
-// https://www.google.com/maps/search/tower+of+london/@51.5081066,-0.0781629,17z
-export default function Map({ listOfMarkers }){
-  const center = useMemo(() => ({ lat: 38.8977, lng: -77.0365 }), [])
+  const iconPic = 'https://openclipart.org/image/50px/27069';
+
+  useEffect(() => {
+
+  }, [jobs])
+
   return (
     // Important! Always set the container height explicitly
       <GoogleMap
-        zoom={8}
+        zoom={11}
         center={center}
         mapContainerClassName={styles.map}
       >
-        <MarkerF
-        key={center.lat}
-        position={center}
-         />
+          <MarkerF
+          key={center.lat}
+          position={center}
+          // icon={iconPic}
+          />
+        {jobs.map((job, index) => (
+            <MarkerF
+            key={index}
+            position={job.coordinates ? {lat: parseFloat(job.coordinates.lat), lng: parseFloat(job.coordinates.lng)} : null}
+            // icon={iconPic}
+            />
+        ))}
       </GoogleMap>
   );
 }
