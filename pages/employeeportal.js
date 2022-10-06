@@ -6,7 +6,6 @@ import EmployeeAcc from '../components/EmployeeAccordion';
 import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
-
 import { useUser } from "@auth0/nextjs-auth0";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +13,11 @@ export default function Employees() {
   const [jobs, setJobs] = useState([]);
   const { user, error, isLoading } = useUser();
 
+<<<<<<< HEAD
   const employee = user ? <div className={styles.header}> {user.name || 'Employee'} Portal</div> : "Employee";
+=======
+  const employee = user ? <div className={styles.header}>{user.name || 'Employee'} Dashboard </div> : "Employee";
+>>>>>>> 3aaff8ea9be1187133cc7fe231761edff0121fb3
 
   useEffect(() => {
     if (user && user.role === "Employer") {
@@ -27,7 +30,6 @@ export default function Employees() {
         .catch((err) => console.error(err));
     }
   }, [user]);
-
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   })
@@ -53,7 +55,7 @@ export default function Employees() {
         <div className={styles.accordion}><EmployeeAcc jobs={jobs}/></div>
         <div className={styles.dataBoxes}>
           <div className={styles.directions}>
-            {isLoaded ? <Map /> : <div>Loading...</div>}
+            {isLoaded ? <Map jobs={jobs}/> : <div>Loading...</div>}
           </div>
           <div className={styles.hours}>
             <EmployeeScheduleTable jobs={jobs}/>
