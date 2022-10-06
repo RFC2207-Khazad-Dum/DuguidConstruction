@@ -6,6 +6,7 @@ import EmployeeAcc from '../components/EmployeeAccordion';
 import EmployeeScheduleTable from '../components/EmployeeTableSchedule';
 import Map from '../components/map';
 import styles from '../styles/EmployeePortal.module.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Employees() {
   const [jobs, setJobs] = useState([]);
@@ -31,6 +32,11 @@ export default function Employees() {
         <title>Duguid Construction</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div id={styles.image}>
+        <img className={styles.happyWorkers} src="/img/happyworkers1.png"/>
+        <img className={styles.happyWorkers} src="/img/happyworkers2.png"/>
+        <img className={styles.happyWorkers} src="/img/happyworkers3.png"/>
+      </div>
       <div>
         <div className={styles.header}>- Employee Name Here - Portal</div>
         <div className={styles.accordion}><EmployeeAcc jobs={jobs}/></div>
