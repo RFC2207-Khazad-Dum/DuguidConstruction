@@ -8,8 +8,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReviewModal from '../components/ReviewModal.js'
+import ReviewModal from '../components/ReviewModal.js';
+import JobImage from "../components/JobImage";
 import ContactUs from '../components/ContactUs.js';
+
 
 const Reviews = () => {
   const [show, setShow] = useState(false);
@@ -24,7 +26,6 @@ const Reviews = () => {
   useEffect(() => {
     axios.get('http://localhost:8080/reviews')
       .then(response => {
-        console.log('show data =', response.data);
         const firstThree = [];
         const rest = [];
         response.data.forEach((el, index) => {
@@ -44,7 +45,7 @@ const Reviews = () => {
 
   const handleSelect = (event) => {
     setSelected(event.target.name);
-    if (event.target.name === "All") {
+    if (event.target.name === "All Entries") {
       axios.get('http://localhost:8080/reviews')
       .then(response => {
         setIsFiltered(true)
@@ -115,7 +116,7 @@ const Reviews = () => {
         <Dropdown as={ButtonGroup} size="lg">
           <Dropdown.Toggle variant="success" id="dropdown-basic">Filter By</Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1" name="All" onClick={handleSelect}>None (Show All Entries)</Dropdown.Item>
+            <Dropdown.Item href="#/action-1" name="All Entries" onClick={handleSelect}>None (Show All Entries)</Dropdown.Item>
             <Dropdown.Item href="#/action-2" name="Carpentry" onClick={handleSelect}>Carpentry</Dropdown.Item>
             <Dropdown.Item href="#/action-3" name="Painting" onClick={handleSelect}>Painting</Dropdown.Item>
             <Dropdown.Item href="#/action-4" name="Plumbing" onClick={handleSelect}>Plumbing</Dropdown.Item>
@@ -139,11 +140,16 @@ const Reviews = () => {
                   <p>{review.user}, {review.city} {review.state}</p>
                   <p>{date.toLocaleDateString()}</p>
                 </div>
+                <div className={styles.categoryContainer}>
+                  {review.categories.map((category, index) => {
+                    return (<span key={index} className={styles.categoryItem}>{category}</span>)
+                  })}
+                </div>
                 <div>
-                    {review.img.length > 0 ? review.img.map((image, index) => {
-                      return (<img className={styles.imageThumbnail} key={index} src={image} />)
-                    }) : <></>}
-                  </div>
+                  {review.img.length > 0 ? review.img.map((image, index) => {
+                    return (<JobImage key={index} url={image} />)
+                  }) : <></>}
+                </div>
               </div>
             )
           }) : (isFiltered && displayedReviews.length > 0) ?
@@ -157,9 +163,14 @@ const Reviews = () => {
                     <p>{review.user}, {review.city} {review.state}</p>
                     <p>{date.toLocaleDateString()}</p>
                   </div>
+                  <div className={styles.categoryContainer}>
+                    {review.categories.map((category, index) => {
+                      return (<span key={index} className={styles.categoryItem}>{category}</span>)
+                    })}
+                  </div>
                   <div>
                     {review.img.length > 0 ? review.img.map((image, index) => {
-                      return (<img className={styles.imageThumbnail} key={index} src={image} />)
+                      return (<JobImage key={index} url={image} />)
                     }) : <></>}
                   </div>
                 </div>
@@ -169,7 +180,7 @@ const Reviews = () => {
         }
       </div>
       <div className={styles.bottomButton}>
-        { nextReviews.length > 0 ? <Button variant="success" size="lg" onClick={handleMoreReviews}>See More Reviews</Button> : <></>}
+        {nextReviews.length > 0 ? <Button variant="success" size="lg" onClick={handleMoreReviews}>See More Reviews</Button> : <></>}
       </div>
       <ContactUs/>
     </div>
