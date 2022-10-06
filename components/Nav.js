@@ -18,12 +18,12 @@ const Navigation = () => {
     <Navbar bg="light" expand="lg" className={styles.coloredNav}>
     <Container>
     <Navbar.Brand href="/">
-            <img
-              alt="Duguid Construction Logo"
-              src="/img/DuguidLogo.png"
-              className={styles.logo}
-            />
-          </Navbar.Brand>
+      <img
+        alt="Duguid Construction Logo"
+        src="/img/DuguidLogo.png"
+        className={styles.logo}
+      />
+    </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
