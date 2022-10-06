@@ -30,7 +30,7 @@
   margin-top: 3%;
   font-weight: 600;
   color: rgb(242, 242, 242) !important;
-  box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.45);  background-color: rgba(32, 95, 18, 0.753);
+  box-shadow: 0px 3px 3px rgba(44, 44, 44, 0.45);  background-color: rgba(32, 113, 14, 0.753);
   border: 0;
   border-radius: 5px;
   width: 120px;
@@ -39,85 +39,69 @@
 .addJobBtn:hover {
   background-color: rgba(32, 95, 18, 0.632);
 }
-.active {
-  border: 1px solid rgb(11, 52, 0);
-  background-color: rgba(161, 222, 133, 0.354);
-  color: rgb(0, 55, 0);
-  border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
-  margin-right: 1%;
-}
-.Carpentry {
-  border: 1px solid rgb(11, 52, 0);
+.Carpentry {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(222, 167, 133, 0.354);
   color: rgb(55, 41, 0);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
+  margin-bottom: 2%;
 }
-.Painting {
-  border: 1px solid rgb(11, 52, 0);
+.Painting {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(222, 221, 133, 0.354);
   color: rgb(49, 55, 0);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.Plumbing {
-  border: 1px solid rgb(11, 52, 0);
+.Plumbing {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(133, 222, 207, 0.354);
   color: rgb(0, 21, 55);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.Electrical {
-  border: 1px solid rgb(52, 50, 0);
+.Electrical {  border: 1px solid rgb(52, 50, 0);
   background-color: rgba(222, 133, 222, 0.354);
   color: rgb(11, 0, 55);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.Drywall {
-  border: 1px solid rgb(11, 52, 0);
+.Drywall {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(222, 184, 133, 0.354);
   color: rgb(55, 47, 0);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.Concrete {
-  border: 1px solid rgb(11, 52, 0);
+.Concrete {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(240, 208, 182, 0.354);
   color: rgb(42, 55, 0);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.Demolition {
-  border: 1px solid rgb(11, 52, 0);
+.Demolition {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(222, 133, 161, 0.354);
   color: rgb(55, 0, 53);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
-.HVAC {
-  border: 1px solid rgb(11, 52, 0);
+.HVAC {  border: 1px solid rgb(11, 52, 0);
   background-color: rgba(155, 133, 222, 0.295);
   color: rgb(24, 0, 55);
   border-radius: 8px;
-  padding: 1%;
-  font-size: smaller;
+  padding: 3px;
+  font-size: 14px;
   margin-right: 1%;
 }
 .jobGallery {

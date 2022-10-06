@@ -60,7 +60,7 @@ export default function Jobs() {
       ) : (
         <div className={styles.pleaseLogIn}>
         <h1 className={styles.title}>
-          Please <span className={styles.loginSpan}>log in</span> to view your current jobs.
+          Please <span className={styles.loginSpan} href="/contact">log in</span> to view your current jobs.
         </h1>
         </div>
       )}
