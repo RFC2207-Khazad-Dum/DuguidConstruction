@@ -49,7 +49,6 @@ export default function EmployeeJobList({job}) {
     }
     axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => {
-        setNotes('');
         setImages([]);
         handleClose();
       })
