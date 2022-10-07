@@ -13,7 +13,7 @@ export default function Contact() {
       <div id={styles.image}>
         <img className={styles.phoneCall} src="/img/woman-phone.png"/>
         <img className={styles.phoneCall} src="/img/smiling woman.jpeg"/>
-        <img className={styles.phoneCall} src="/img/man-phone.png"/>
+        <img className={styles.phoneCall} src="/img/image.png"/>
       </div>
       <div id={styles.mainContact}>
         <div id={styles.contactTitle}>

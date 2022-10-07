@@ -17,12 +17,13 @@
 }
 
 #contactInfo {
-  padding: 20px 75px 20px 75px;
+  padding: 20px 75px 20px 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 50%;
   color: rgb(35, 35, 35);
+  gap: 200px;
 }
 
 #contactTitle {
