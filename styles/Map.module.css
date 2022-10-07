@@ -1,7 +1,6 @@
 .map {
-  border: lightslategray 3px solid;
-  margin: .5vw;
-  width: 44vw;
-  height: 50vh;
-  max-height: 50vh;
+  border: gray 1px solid;
+  width: 45vw;
+  height: 51vh;
+  max-height: 52vh;
 }
