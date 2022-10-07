@@ -1,14 +1,36 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
+import ToolListModal from './ToolListModal';
 
 export default function EmployeeScheduleTable({jobs}) {
   const [show, setShow] = useState(false);
+  const [tools, setTools] = useState([]);
+  const [task, setTask] = useState({});
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setTools([]);
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
+
+  const handleClick = (e) => {
+    let temp = [];
+    let job = JSON.parse(e.target.value);
+    job.categories.map(cat => {
+      axios.get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/tools/${cat}`)
+        .then((res) => {
+          res.data[0].tools.forEach(tool => {
+            if (temp.indexOf(tool) === -1) temp.push(tool);
+          });
+          setTools(temp);
+          setTask(job);
+        })
+        .catch((err) => console.error(err));
+    })
+    handleShow();
+  }
 
   return (
       <Table striped='columns' size='lg' bordered hover style={{backgroundColor: 'white', textAlign: 'left', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto', fontSize: '1.4vw'}}>
@@ -28,26 +50,15 @@ export default function EmployeeScheduleTable({jobs}) {
                 <td style={{fontSize: '1.1vw'}}>{job.title}</td>
                 <td style={{fontSize: '1.1vw'}}>{job.assignedEmployee}</td>
                 <td style={{fontSize: '1.1vw'}}>
-                  <Button variant="outline-success" onClick={handleShow}>
+                  <Button variant="outline-success" value={JSON.stringify(job)} onClick={handleClick}>
                     Tools
                   </Button>
                 </td>
-              </tr>)
+              </tr>
+            )
           })}
         </tbody>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Tools Needed For Job</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Tools Here
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <ToolListModal show={show} tools={tools} task={task} handleClose={handleClose}/>
       </Table>
 
   )
