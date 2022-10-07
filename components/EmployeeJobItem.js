@@ -19,8 +19,8 @@ import Geocode from 'react-geocode';
 
 
 export default function EmployeeJobList({job}) {
-  const [coordinates, setCoordinates] = React.useState([]);
-  const [address, setAddress] = React.useState('');
+  const [coordinates, setCoordinates] = useState([]);
+  const [address, setAddress] = useState('');
   const [show, setShow] = useState(false);
   const [notes, setNotes] = useState('');
   const [images, setImages] = useState([]);
@@ -90,16 +90,17 @@ export default function EmployeeJobList({job}) {
   return (
     <>
       <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
-        <div>
+        <div className={styles.holdsAccordion}>
           <Accordion className={styles.acc}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={styles.jobColumns}>{job.title || 'Job Title'}
+            <Typography className={styles.jobTitles}>
+              <div className={styles.jobTitles}>{job.title || 'Job Title'}</div>
             <br />
-            {job.categories.map((category, index) => {
+            <div className={styles.jobSpans}>{job.categories.map((category, index) => {
             if (index === 3) {
               return (
                 <>
@@ -116,7 +117,7 @@ export default function EmployeeJobList({job}) {
                 </span>
               );
             }
-          })}
+          })}</div>
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={styles.accList}>
@@ -142,8 +143,7 @@ export default function EmployeeJobList({job}) {
                 ) || 'no notes...'}
               </li>
               <li>
-                <Button className={styles.accJobBtn} tag={job.address} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>
-
+                <Button className={styles.accJobBtn} tag={`${job.address1}, ${job.city}`} variant="outline-success" onClick={handleDirectionsClick}>Click Here For Directions</Button>
                 <Button className={styles.accJobBtn} variant="outline-success" onClick={handleShow}>Add Notes</Button>
                 {assign}
                 <Modal show={show} onHide={handleClose}>

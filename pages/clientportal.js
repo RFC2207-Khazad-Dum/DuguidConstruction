@@ -20,12 +20,11 @@ export default function Jobs() {
     axios
       .get(`http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/getJobs/${user.email}`)
       .then((response) => {
-        console.log(response);
         setJobs(response.data);
       })
       .catch((err) => console.log(err));
       }
-  }, [show, user]);
+  }, [user]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -54,7 +53,7 @@ export default function Jobs() {
             <button className={styles.addJobBtn} onClick={handleShow}>
               + &nbsp;ADD A JOB
             </button>
-            <JobModal show={show} handleClose={handleClose} email={user.email}/>
+            <JobModal show={show} handleClose={handleClose} email={user.email} setJobs={setJobs} jobs={jobs}/>
           </div>
         </>
       ) : (
