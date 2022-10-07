@@ -35,7 +35,7 @@ export default function EmployeeJobList({job}) {
       <Dropdown.Item onClick={e => assignJob(e)} name="Jacob" href="#/action-1">Jacob</Dropdown.Item>
       <Dropdown.Item onClick={e => assignJob(e)} name="Adam" href="#/action-2">Adam</Dropdown.Item>
     </Dropdown.Menu>
-  </Dropdown>) : (<></>);
+  </Dropdown>) : (null);
 
   const addNotes = () => {
     const option = {
@@ -49,7 +49,6 @@ export default function EmployeeJobList({job}) {
     }
     axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
       .then(() => {
-        setNotes('');
         setImages([]);
         handleClose();
       })
@@ -60,7 +59,6 @@ export default function EmployeeJobList({job}) {
     let temp = images;
     temp.push(url);
     setImages(temp);
-    console.log('These are the images in state:, ', images)
   }
 
   const assignJob = (e) => {
@@ -69,7 +67,6 @@ export default function EmployeeJobList({job}) {
       change: {assignedEmployee: e.target.name},
     }
     axios.put('http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/editjob', option)
-      .then(() => console.log('success'))
       .catch((err) => console.error(err));
   }
 
@@ -79,11 +76,12 @@ export default function EmployeeJobList({job}) {
   const handleDirectionsClick = function(e) {
     let name = e.target.getAttribute('tag');
     Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-    Geocode.fromAddress(name)
+    Geocode.fromAddress(name.toString())
       .then((res) => {
         setCoordinates([res.results[0].geometry.location.lat, res.results[0].geometry.location.lng])
         name.replace(' ', '+');
       })
+      .catch((err) => console.error(err))
       .then(() => { window.open(`https://www.google.com/maps/search/${name}/@${coordinates[0]},${coordinates[1]},17z`, '_blank', 'noopener,noreferrer')
       })
   };
@@ -98,18 +96,18 @@ export default function EmployeeJobList({job}) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={styles.jobTitles}>
+            <Typography className={styles.jobTitles} component={'span'}>
               <div className={styles.jobTitles}>{job.title || 'Job Title'}</div>
             <br />
             <div className={styles.jobSpans}>{job.categories.map((category, index) => {
             if (index === 3) {
               return (
-                <>
+                <div key={index}>
                   <span key={index} className={styles[category]}>
                     {category}
                   </span>
                   <br />
-                </>
+                </div>
               );
             } else {
               return (
@@ -138,8 +136,8 @@ export default function EmployeeJobList({job}) {
                   <span className={styles.jobColumns}>Assigned Employee:</span> {job.assignedEmployee || 'None'}
                 </Typography>
                 {job.notes.map((note, index) =>
-                  <Typography key={index}>
-                    <span className={styles.jobColumns}>Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                  <Typography className={styles.notes} key={index}>
+                    <span className={styles.jobColumns} >Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
                   </Typography>
                 ) || 'no notes...'}
               </li>
