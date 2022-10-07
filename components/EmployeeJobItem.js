@@ -86,6 +86,10 @@ export default function EmployeeJobList({job}) {
       })
   };
 
+  useEffect(() => {
+    console.log('firing useEffect');
+  }, [notes, images])
+
   return (
     <>
       <Script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript" />
@@ -137,7 +141,7 @@ export default function EmployeeJobList({job}) {
                 </Typography>
                 {job.notes.map((note, index) =>
                   <Typography className={styles.notes} key={index}>
-                    <span className={styles.jobColumns} >Note:</span> {note.note} {note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
+                    <span className={styles.jobColumns} >Note:</span> {note.note}<br/>{note.img.map((i, index) => <JobImage key={index} url={i}/> || '')}
                   </Typography>
                 ) || 'no notes...'}
               </li>
