@@ -55,6 +55,9 @@ export default class JobModal extends React.Component {
   };
 
   handleSubmit = () => {
+    let newJobs = this.props.jobs;
+    newJobs.push(this.state);
+    this.props.setJobs(newJobs);
     Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
     var latVal;
     var lngVal;
@@ -65,7 +68,6 @@ export default class JobModal extends React.Component {
       this.setState({
         coordinates: { lat: latVal, lng: lngVal },
       })
-      console.log('without state ref:', latVal, lngVal);
       setTimeout(() => axios.post("http://ec2-18-221-69-122.us-east-2.compute.amazonaws.com:8080/addjob", this.state), 250); // Temporary Fix
     })
     .then(this.props.handleClose)
