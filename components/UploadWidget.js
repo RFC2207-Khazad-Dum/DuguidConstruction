@@ -14,7 +14,6 @@ class ImageUpload extends React.Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url);
           this.props.handleImageUpload(result.info.url)
         }
       }

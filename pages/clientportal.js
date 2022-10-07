@@ -14,7 +14,6 @@ export default function Jobs() {
   const { user, error, isLoading } = useUser();
   const [show, setShow] = useState(false);
   const [jobs, setJobs] = useState([]);
-  console.log(user);
   useEffect(() => {
     if (user) {
     axios

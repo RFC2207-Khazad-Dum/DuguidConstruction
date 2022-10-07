@@ -59,7 +59,6 @@ export default function EmployeeJobList({job}) {
     let temp = images;
     temp.push(url);
     setImages(temp);
-    console.log('These are the images in state:, ', images)
   }
 
   const assignJob = (e) => {
@@ -82,7 +81,7 @@ export default function EmployeeJobList({job}) {
         setCoordinates([res.results[0].geometry.location.lat, res.results[0].geometry.location.lng])
         name.replace(' ', '+');
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
       .then(() => { window.open(`https://www.google.com/maps/search/${name}/@${coordinates[0]},${coordinates[1]},17z`, '_blank', 'noopener,noreferrer')
       })
   };
