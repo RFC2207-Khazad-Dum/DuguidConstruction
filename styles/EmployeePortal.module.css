@@ -1,5 +1,6 @@
 .container {
   height: auto;
+  background-color: white;
 }
 .header {
   display: flex;
@@ -10,30 +11,27 @@
 }
 .accordion {
   display: flex;
-  border: 1px solid lightgrey;
+  border: 1px solid gray;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-left: 20vw;
+  margin-left: 8vw;
   margin-top: 1vw;
   margin-bottom: 3vw;
-  width: 55vw;
+  width: 85vw;
 }
 .dataBoxes {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-bottom: 1vw;
 }
 .directions {
   display: flex;
-  background-color: tan;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 2px solid black;
   width: 45vw;
-  height: auto;
+  margin-top: .1vw;
+  height: 56vh;
 }
 .map {
   width: 26vw;
@@ -45,9 +43,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  border: 2px solid black;
-  width: 45vw;
-
+  width: 46.5vw;
   height: 52vh;
   max-height: 52vh;
   overflow-x: hidden;
