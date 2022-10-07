@@ -38,7 +38,7 @@ const Navigation = () => {
           <Nav.Link href='/api/auth/login' className={styles.link}>LOGIN</Nav.Link>
         )}
          {user ? (
-            <Nav.Link className={styles.user}>{user.name}{console.log(user)}</Nav.Link>
+            <Nav.Link className={styles.user}>{user.name}</Nav.Link>
           ) : null}
         </Nav>
       </Navbar.Collapse>

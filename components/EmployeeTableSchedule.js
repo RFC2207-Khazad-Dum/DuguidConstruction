@@ -52,7 +52,7 @@ export default function EmployeeScheduleTable({jobs}) {
                 <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2vh', verticalAlign: 'middle'}}>{job.title}</td>
                 <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle'}}>{job.assignedEmployee}</td>
                 <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle'}}>
-                  <Button variant="outline-success" onClick={handleShow}>
+                  <Button variant="outline-success" value={JSON.stringify(job)} onClick={handleClick}>
                     Tools
                   </Button>
                 </td>

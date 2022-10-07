@@ -35,7 +35,7 @@ export default function EmployeeJobList({job}) {
       <Dropdown.Item onClick={e => assignJob(e)} name="Jacob" href="#/action-1">Jacob</Dropdown.Item>
       <Dropdown.Item onClick={e => assignJob(e)} name="Adam" href="#/action-2">Adam</Dropdown.Item>
     </Dropdown.Menu>
-  </Dropdown>) : (<></>);
+  </Dropdown>) : (null);
 
   const addNotes = () => {
     const option = {
@@ -97,18 +97,18 @@ export default function EmployeeJobList({job}) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={styles.jobTitles}>
+            <Typography className={styles.jobTitles} component={'span'}>
               <div className={styles.jobTitles}>{job.title || 'Job Title'}</div>
             <br />
             <div className={styles.jobSpans}>{job.categories.map((category, index) => {
             if (index === 3) {
               return (
-                <>
+                <div key={index}>
                   <span key={index} className={styles[category]}>
                     {category}
                   </span>
                   <br />
-                </>
+                </div>
               );
             } else {
               return (
