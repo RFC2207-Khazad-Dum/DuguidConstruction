@@ -1,13 +1,23 @@
-.acc {
-  width: 80vw;
+.acc:hover {
+ background-color: rgba(193, 229, 183, 0.335);
 }
+.holdsAccordion {
+  width: 85vw;
+  max-height: 55vh;
+  background-color: white;
+  border-bottom: 1px solid gray;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .accList {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   gap: 27.5vw;
 }
+
 .accJobBtn {
   background-color: white;
   width: 20vw;
@@ -15,10 +25,26 @@
   margin-bottom: 2vh;
 }
 .jobColumns {
+  font-size: 1.25vw;
   font-weight: 600 !important;
 }
+.jobTitles {
+  font-size: 1.7vw;
+  margin-bottom: -1vw;
+}
+.jobTags {
+  font-weight: 100 !important;
+  font-size: 4vw !important;
+}
+.jobSpans {
+  display: flex;
+  width: 15vw;
+  gap: 3px;
+  flex-wrap: wrap;
+  margin-left: 2vw;
+}
 .notes {
-  border: 1px solid black;
+  border-top: 1px solid black;
 }
 .jobList {
   display: flex;

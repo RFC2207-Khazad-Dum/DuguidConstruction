@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table';
+import styles from '../styles/table.module.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -11,8 +12,9 @@ export default function EmployeeScheduleTable({jobs}) {
   const handleShow = () => setShow(true);
 
   return (
-      <Table striped='columns' size='lg' bordered hover style={{backgroundColor: 'white', textAlign: 'left', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto', fontSize: '1.4vw'}}>
-        <thead style={{backgroundColor: 'lightblue'}}>
+    <div className={styles.table}>
+      <Table striped='columns' size='lg' bordered hover style={{backgroundColor: 'white', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle', height: '20vh', 'overflowY': 'auto', fontSize: '1.4vw'}}>
+        <thead style={{backgroundColor: 'lightblue', fontSize: '1.6vw', fontWeight: '500', height: '2vh'}}>
           <tr>
             <th style={{ width: '10vw' }}>Date</th>
             <th>Job</th>
@@ -24,10 +26,10 @@ export default function EmployeeScheduleTable({jobs}) {
           {jobs.map((job, index) => {
             return (
               <tr key={index}>
-                <td style={{fontSize: '1.1vw'}}>{job.date.slice(0,10)}</td>
-                <td style={{fontSize: '1.1vw'}}>{job.title}</td>
-                <td style={{fontSize: '1.1vw'}}>{job.assignedEmployee}</td>
-                <td style={{fontSize: '1.1vw'}}>
+                <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle'}}>{job.date.slice(0,10)}</td>
+                <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2vh', verticalAlign: 'middle'}}>{job.title}</td>
+                <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle'}}>{job.assignedEmployee}</td>
+                <td style={{fontSize: '1.1vw', textAlign: 'center', lineHeight: '2.5vh', verticalAlign: 'middle'}}>
                   <Button variant="outline-success" onClick={handleShow}>
                     Tools
                   </Button>
@@ -49,6 +51,7 @@ export default function EmployeeScheduleTable({jobs}) {
           </Modal.Footer>
         </Modal>
       </Table>
+    </div>
 
   )
 };
